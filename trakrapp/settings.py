@@ -19,16 +19,21 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "ks_f2bq+)!c#j_y$-@dh0kci_4p^4uw3r!c05@#i=)@rt$t!+k"
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# SECURITY WARNING: keep the secret key used in production secret!
+if DEBUG:
+    SECRET_KEY = "ks_f2bq+)!c#j_y$-@dh0kci_4p^4uw3r!c05@#i=)@rt$t!+k"
+else:
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'trakr',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
