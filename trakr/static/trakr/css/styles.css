@@ -1,11 +1,27 @@
 body{
-    height: 200vh;
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
     background-image: url("../images/background4.png");
-    background-position: 0% 50%; 
-    /* Rectangle 3: */
-
 }
-    
+#backplate{
+    padding: 0;
+}
+#main{
+    height: 200vh;
+    position: relative;
+}
+
+#footerbar{
+    /*padding-top: 15px;*/
+    padding-bottom: 50px;
+    min-height: 50px;
+    width:100%;
+    background-color: #6F06FB;
+}
+.footerbarItem{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
 
    
