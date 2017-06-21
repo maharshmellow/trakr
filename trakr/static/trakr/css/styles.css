@@ -15,13 +15,15 @@ body{
 #footerbar{
     /*padding-top: 15px;*/
     padding-bottom: 50px;
-    min-height: 50px;
+    height: 50px;
     width:100%;
     background-color: #6F06FB;
 }
 .footerbarItem{
     padding-top: 15px;
     padding-bottom: 15px;
+    color: white;
+    font-family: "BG";
 }
 
    
