@@ -30,7 +30,7 @@ body{
     border-radius: 2px;
 }
 #infoSectionFeatures{
-    padding-top: 60px;
+    padding-top: 50px;
     font-size: 18px;
     letter-spacing: 1.0px;
     line-height: 50px;
@@ -66,11 +66,18 @@ body{
     padding-top: 15px;
     padding-bottom: 15px;
     color: white;
-    font-family: "Graphik-Light";
+    font-family: "BG";
     letter-spacing: -0.55px;
 
 }
-
 .img-center {
     margin:0 auto;
+}
+.undraggable{
+    user-drag: none; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
