@@ -15,15 +15,36 @@
 
 <body>
     <div id="backplate" class="container-fluid">
-        <div id="main">
-            
-        </div>
-        <div class="row">
-            <div id="footerbar">
-                <div class="col-xs-12 text-center footerbarItem">Made with &hearts; by Maharsh Patel</div>
+        <div class="row" id="mainRow">
+            <div class="col-md-6" id="infoSection">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center" src="{% static 'trakr/images/logo.png' %}"> <br></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 text-center" id="infoSectionFeatures">
+                        <span id="featuresTag" class="text-center">Features</span> <br>
+                        Track <strong>Unlimited</strong> Websites <br>
+                        Email and SMS Notifications <br>
+                        Set <strong>Custom Time</strong> for notifications<br>
+                        or receive <strong>Instant Notifications</strong>
 
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
             </div>
-        
+
+            <div class="col-md-4" id="loginSection">
+                <div id="loginArea" class="center-block"></div>
+            </div>
+            <div class="col-md-2"></div>
+
+
+        </div>
+        <div id="footerbar" class="row">
+            <div class="col-xs-12 text-center footerbarItem">Made with &hearts; by Maharsh Patel</div>
         </div>
     </div>
     
