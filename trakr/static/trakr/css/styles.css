@@ -12,7 +12,7 @@ body{
 
 #mainRow{
     margin-top: 100px;
-    height: 200vh;
+    height: 210vh;
     position: relative;
 }
 #infoSection{
@@ -85,7 +85,6 @@ body{
 }
 #loginSignupButtons{
     position: relative;
-
     bottom: -50px;
     width: 100%;
 }
@@ -109,13 +108,38 @@ body{
 }
 #errorBar{
     font-family: "BG";
+    font-weight: 700;
     font-style: italic;
     font-size: 16px;
     color: #FF1001;
     letter-spacing: 1.08px;
 }
+
+#trakrMessage{
+    padding-top: 150px;
+    font-family: "BG";
+    font-weight: 200;
+    font-style: italic;
+    font-size: 18px;
+    opacity: 0.80;
+}
+#useCase1{
+    margin-top: 250px;
+    visibility: 0;
+}
+#useCase1_image{
+    /*width: 50%;*/
+
+}
+#useCase1_text{
+    margin-top: 2em;
+    font-family: "BG";
+    font-weight: 200;
+    font-size: 18px;
+    font-style: italic;
+}
+
 #footerbar{
-    /*padding-top: 15px;*/
     padding-bottom: 50px;
     height: 50px;
     width:100%;
