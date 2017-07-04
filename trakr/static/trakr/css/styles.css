@@ -12,7 +12,7 @@ body{
 
 #mainRow{
     margin-top: 100px;
-    height: 210vh;
+    height: 220vh;
     position: relative;
 }
 #infoSection{
@@ -117,6 +117,7 @@ body{
 
 #trakrMessage{
     padding-top: 150px;
+    margin-bottom: 250px;
     font-family: "BG";
     font-weight: 200;
     font-style: italic;
@@ -124,8 +125,8 @@ body{
     opacity: 0.80;
 }
 #useCase1{
-    margin-top: 250px;
-    visibility: 0;
+
+
 }
 #useCase1_image{
     /*width: 50%;*/
@@ -140,20 +141,16 @@ body{
 }
 
 #footerbar{
-    /*padding-bottom: 50px;*/
-    /*height: 50px;*/
+    height: 50px;
     width:100%;
     margin: 0;
     background-color: #6F06FB;
+    padding-top: 15px;
+    padding-bottom: 15px;
     color: white;
     font-family: "BG";
     font-weight: 100;
     letter-spacing: -0.55px;
-}
-.footerbarItem{
-    padding-top: 15px;
-    padding-bottom: 15px;
-    
 
 }
 .img-center {
