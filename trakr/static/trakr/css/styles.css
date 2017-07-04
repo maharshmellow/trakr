@@ -25,6 +25,7 @@ body{
     background-color: #6F06FB;
     background: #6F06FB;
     font-size: 14px;
+    font-weight: 100;
     letter-spacing: 0.19px;
     padding: 2px 15px 2px 15px;
     border-radius: 2px;
@@ -32,6 +33,7 @@ body{
 #infoSectionFeatures{
     padding-top: 50px;
     font-size: 18px;
+    font-weight: 100;
     letter-spacing: 1.0px;
     line-height: 50px;
     padding-bottom: 100px;
@@ -40,20 +42,68 @@ body{
     width: 150px;
     padding-top: 5px;
 }
-#loginSection{
-    font-family: "BG";
-    letter-spacing: 0.34px;
-    /*background-color: red;*/
 
-}
 #loginArea{
     background-color: white;
-    height: 500px;
+    color: #342B60;
+    height: 400px;
     width: 400px;
     background: #F8F8F8;
     box-shadow: 0 0 56px 9px rgba(28,28,28,0.56);
 }
+#loginBlock{
+    padding-top: 60px;
+}
 
+.loginTitles{
+    position: absolute;
+    font-family: "BG";
+    font-weight: 400;
+    font-size: 1.1em;
+    color: #463C70;
+    margin-top: 23px;
+    color: #342B60;
+    letter-spacing: 1.87px;
+}
+
+#loginInputs{
+    width: 100%;
+
+}
+
+#usernameInput, #passwordInput{
+    width: 100%;
+    height: 70px;
+    font-family: "BG";
+    font-weight: 300;
+    font-size: 0.6em;
+    color: #463C70;
+    background: rgba(149,124,255,0.07);
+    border: 0;
+    outline: none !important;
+
+}
+#loginSignupButtons{
+    position: relative;
+
+    bottom: -80px;
+    width: 100%;
+}
+#loginButton, #signupButton{
+    /* Rectangle 8: */
+    /*width: 100%;*/
+    color: white;
+    height: 70px;
+    /* LOGIN: */
+    font-family: "BG";
+    font-weight: 300;
+    font-size: 1.1em;
+    color: #FFFFFF;
+    letter-spacing: 0.57px;
+    border: 0;
+    outline: none !important;
+    background: #6F06FB;
+}
 #footerbar{
     /*padding-top: 15px;*/
     padding-bottom: 50px;
@@ -67,6 +117,7 @@ body{
     padding-bottom: 15px;
     color: white;
     font-family: "BG";
+    font-weight: 100;
     letter-spacing: -0.55px;
 
 }
