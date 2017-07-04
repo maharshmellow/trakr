@@ -86,7 +86,7 @@ body{
 #loginSignupButtons{
     position: relative;
 
-    bottom: -80px;
+    bottom: -50px;
     width: 100%;
 }
 #loginButton, #signupButton{
@@ -103,6 +103,16 @@ body{
     border: 0;
     outline: none !important;
     background: #6F06FB;
+}
+#loginButton:hover, #signupButton:hover{
+    background-color: #5C06D0;
+}
+#errorBar{
+    font-family: "BG";
+    font-style: italic;
+    font-size: 16px;
+    color: #FF1001;
+    letter-spacing: 1.08px;
 }
 #footerbar{
     /*padding-top: 15px;*/
