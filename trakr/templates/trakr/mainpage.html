@@ -7,19 +7,7 @@
     <link rel="stylesheet" href="{% static 'trakr/css/bootstrap.min.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'trakr/css/fonts.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'trakr/css/styles.css' %}" type="text/css" />
-    <!-- <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAiCNv_Pnzrr1l2qUE4zSQiFxqQHMKHspw",
-            authDomain: "trakr-39dff.firebaseapp.com",
-            databaseURL: "https://trakr-39dff.firebaseio.com",
-            projectId: "trakr-39dff",
-            storageBucket: "",
-            messagingSenderId: "712101225728"
-        };
-        firebase.initializeApp(config);
-    </script> -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{% static 'trakr/js/scripts.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,8 +55,8 @@
                     </div>
                     <div class="col-md-1"></div>
                     <div id="loginSignupButtons">
-                        <button id="loginButton" class="col-md-6 col-xs-6">LOGIN</button>
-                        <button id="signupButton" class="col-md-6 col-xs-6">SIGNUP</button>
+                        <button id="loginButton" onclick="login()" class="col-md-6 col-xs-6">LOGIN</button>
+                        <button id="signupButton" onclick="signup()" class="col-md-6 col-xs-6">SIGNUP</button>
                     </div>
 
                 </div>

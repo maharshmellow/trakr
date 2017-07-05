@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Maharsh Patel</title>
+    <meta charset="utf-8" /> {% load static %}
+    <link rel="stylesheet" href="{% static 'trakr/css/bootstrap.min.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'trakr/css/fonts.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'trakr/css/styles.css' %}" type="text/css" />
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <!-- <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAiCNv_Pnzrr1l2qUE4zSQiFxqQHMKHspw",
+            authDomain: "trakr-39dff.firebaseapp.com",
+            databaseURL: "https://trakr-39dff.firebaseio.com",
+            projectId: "trakr-39dff",
+            storageBucket: "",
+            messagingSenderId: "712101225728"
+        };
+        firebase.initializeApp(config);
+    </script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'trakr/js/scripts.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <div id="backplate" class="container-fluid">
+        <div class="row" id="mainRow">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/logo.png' %}"> <br></div>
+                <div class="col-md-2"></div>
+            </div>
+
+            
+        <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div>
+        </div>
+
+        <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
+    </div>
+
+
+</body>
+<script>
+// // CREATE A USER
+// firebase.auth().createUserWithEmailAndPassword("patel@maharsh.net", "password").catch(function(error) {
+//   // Handle Errors here.
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+//
+//   console.log(errorCode);
+//   console.log(errorMessage);
+// });
+
+// // SIGN IN USER
+// firebase.auth().signInWithEmailAndPassword("patel@maharsh.net", "maharsh").catch(function(error) {
+//   // Handle Errors here.
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+//
+//   console.log(errorCode);
+//   console.log(errorMessage);
+// });
+
+// // CHECK IF USER SIGNED IN - GET ID
+// firebase.auth().onAuthStateChanged(function(user) {
+//   if (user) {
+//     // User is signed in.
+//     console.log(user.uid);
+//   } else {
+//     // No user is signed in.
+//     console.log(2);
+//   }
+// });
+
+// // SIGN OUT USER
+// firebase.auth().signOut().then(function() {
+//   console.log('Signed Out');
+// }, function(error) {
+//   console.error('Sign Out Error', error);
+// });
+
+</script>
+
+
+
+</html>
