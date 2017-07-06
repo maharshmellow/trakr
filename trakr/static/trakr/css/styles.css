@@ -2,24 +2,26 @@ body{
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-image: url("../images/another2-compressor.png");
     background-position: 0% 20%;
-    color: white;
+    
 }
 #backplate{
     padding: 0;
 }
 
-#mainRow{
-    margin-top: 100px;
-    position: relative;
-}
-#infoSection{
+#leftSection{
     font-family: "BG";
+    background-color: #6F06FB;
     letter-spacing: 0.34px;
-    right: 0;
+    height: 100vh;
+    padding-top: 25vh;
 }
-#featuresTag{
+#rightSection{
+    background-color: #332E4D;
+    height: 100vh;
+    padding-top: 25vh;
+}
+/*#featuresTag{
     width: 100px;
     background-color: #6F06FB;
     background: #6F06FB;
@@ -28,22 +30,36 @@ body{
     letter-spacing: 0.19px;
     padding: 2px 15px 2px 15px;
     border-radius: 2px;
-}
-#infoSectionFeatures{
+}*/
+/*#infoSectionFeatures{
     padding-top: 50px;
     font-size: 18px;
     font-weight: 100;
     letter-spacing: 1.0px;
     line-height: 50px;
     padding-bottom: 100px;
-}
+}*/
 #trakrLogo{
     width: 150px;
-    padding-top: 5px;
 }
 
+#menu{
+    position: relative;
+    bottom: 0;
+    padding-top: 50vh;
+    font-family: "BG";
+    font-weight: 200;
+    /*font-style: italic;*/
+    font-size: 18px;
+}
+a{
+    color: white;
+}
+a:hover{
+    color: #ff7676;
+    text-decoration: none;
+}
 #loginArea{
-    background-color: white;
     color: #342B60;
     height: 400px;
     width: 400px;
@@ -59,17 +75,14 @@ body{
     font-family: "BG";
     font-weight: 400;
     font-size: 1.1em;
-    color: #463C70;
     margin-top: 23px;
-    color: #342B60;
+    color: #332E4D;
     letter-spacing: 1.87px;
 }
 
 #loginInputs{
     width: 100%;
-
 }
-
 #usernameInput, #passwordInput{
     width: 100%;
     height: 70px;
@@ -88,11 +101,8 @@ body{
     width: 100%;
 }
 #loginButton, #signupButton{
-    /* Rectangle 8: */
-    /*width: 100%;*/
     color: white;
     height: 70px;
-    /* LOGIN: */
     font-family: "BG";
     font-weight: 300;
     font-size: 1.1em;
@@ -110,33 +120,18 @@ body{
     font-weight: 700;
     font-style: italic;
     font-size: 16px;
-    color: #FF1001;
+    color: #ff7676;
     letter-spacing: 1.08px;
 }
-
-#trakrMessage{
-    padding-top: 150px;
-    margin-bottom: 250px;
-    font-family: "BG";
-    font-weight: 200;
-    font-style: italic;
-    font-size: 18px;
-    opacity: 0.80;
+#features{
+    /*margin-top: 300px;*/
+    
+    top: 0;
 }
-#useCase1{
+.feature{
 
-}
-#useCase1_image{
-    /*width: 50%;*/
-
-}
-#useCase1_text{
-    margin-top: 2em;
-    font-family: "BG";
-    font-weight: 200;
-    font-size: 18px;
-    font-style: italic;
-    padding-bottom: 100px;
+    /*height: 60vh;*/
+    height: 60vh;
 }
 
 #footerbar{

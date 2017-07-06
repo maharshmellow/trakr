@@ -16,27 +16,21 @@
 
 <body>
     <div id="backplate" class="container-fluid">
-        <div class="row" id="mainRow">
-            <div class="col-md-6 col-md-push-1" id="infoSection">
+        <div class="row" id="splash">
+            <div class="col-md-5" id="leftSection">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/logo.png' %}"> <br></div>
                     <div class="col-md-2"></div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8 text-center" id="infoSectionFeatures">
-                        <span id="featuresTag">Features</span> <br>
-                        Track <strong>Unlimited</strong> Websites <br>
-                        Email and SMS Notifications <br>
-                        Set <strong>Custom Time</strong> for notifications<br>
-                        or receive <strong>Instant Notifications</strong>
+                    <div id="menu" class="col-md-12 center-block text-center">
+                        <a href="#features">Features</a> <br> <a href="#">Uses</a> <br> <a href="#">Contact</a>
                     </div>
-                    <div class="col-md-2"></div>
                 </div>
             </div>
 
-            <div class="col-md-6 col-md-pull-1" id="loginSection">
+            <div class="col-md-7" id="rightSection">
                 <div id="loginArea" class="center-block">
                     <div class="col-md-1"></div>
                     <div id="loginBlock" class="col-md-10">
@@ -58,29 +52,29 @@
                         <button id="loginButton" onclick="login()" class="col-md-6 col-xs-6">LOGIN</button>
                         <button id="signupButton" onclick="signup()" class="col-md-6 col-xs-6">SIGNUP</button>
                     </div>
-
                 </div>
-
             </div>
 
-            <div id="trakrMessage" class="col-md-12 text-center">
-                Receive Notifications when a Website is Updated
-            </div>
-
-            <div class="row" id="useCase1">
-                <div class="col-md-1 col-xs-0"></div>
-                <div id="useCase1_image" class="col-md-7 col-xs-12">
-                    <img class="img-responsive" src="{% static 'trakr/images/laptop.png' %}"></img>
-                </div>
-                <div id="useCase1_text" class="col-md-3 col-xs-12 text-center">
-                    Track Job Postings, <br> Scholarship Pages, Concert Tickets, and more...
-                </div>
-                <div class="col-md-1 col-xs-0"></div>
-
-
-            </div>
-        <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div>
         </div>
+        <div id="features">
+            <div class="row feature" style="background: rgba(149,124,255,0.07);">
+            </div>
+            <div class="row feature" style="background: rgba(149,124,255,0.10);">
+            </div>
+            <div class="row feature" style="background: rgba(149,124,255,0.07);">
+            </div>
+            <div class="row feature" style="background: rgba(149,124,255,0.10);">
+            </div>
+
+
+
+
+        </div>
+           
+      
+
+        <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div>
+
 
         <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
     </div>
