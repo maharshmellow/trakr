@@ -19,7 +19,7 @@ body{
 #rightSection{
     background-color: #332E4D;
     height: 100vh;
-    padding-top: 25vh;
+    /*padding-top: 25vh;*/
 }
 /*#featuresTag{
     width: 100px;
@@ -42,7 +42,6 @@ body{
 #trakrLogo{
     width: 150px;
 }
-
 #menu{
     position: relative;
     bottom: 0;
@@ -61,13 +60,27 @@ a:hover{
 }
 #loginArea{
     color: #342B60;
-    height: 400px;
-    width: 400px;
+    max-height: 400px;
+    max-width: 400px;
     background: #F8F8F8;
     box-shadow: 0 0 56px 9px rgba(28,28,28,0.56);
+
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    /*height: 80%;*/
+    height: 70%;
+    width: 70%;
+    /*background: red;*/
 }
 #loginBlock{
     padding-top: 60px;
+    /*position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    height: 50%;
+    width: 50%;
+    background: red;*/
 }
 
 .loginTitles{
@@ -78,12 +91,11 @@ a:hover{
     margin-top: 23px;
     color: #332E4D;
     letter-spacing: 1.87px;
+
 }
 
-#loginInputs{
-    width: 100%;
-}
 #usernameInput, #passwordInput{
+
     width: 100%;
     height: 70px;
     font-family: "BG";
@@ -93,6 +105,8 @@ a:hover{
     background: rgba(149,124,255,0.07);
     border: 0;
     outline: none !important;
+    max-width: 100%;
+    overflow-x: hidden;
 
 }
 #loginSignupButtons{

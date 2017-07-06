@@ -1,3 +1,5 @@
+
+
 var config = {
     apiKey: "AIzaSyAiCNv_Pnzrr1l2qUE4zSQiFxqQHMKHspw",
     authDomain: "trakr-39dff.firebaseapp.com",
