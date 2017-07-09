@@ -32,6 +32,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/darklogo.png' %}">
                     <br>
+                <span id="info" style="color: red"></span>
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -45,7 +46,10 @@
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         firebase.auth().currentUser.getIdToken().then(function(idToken) {
-            alert(idToken);
+            // alert(idToken);
+            // alert(user.email);
+            var info = "Email: " + user.email + "<br>ID:" + user.uid + "<br>Token:" + idToken; 
+            document.getElementById("info").innerHTML = info;
         }).catch(function(error) {
             signout();
         });
