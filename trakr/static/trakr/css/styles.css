@@ -1,26 +1,28 @@
-body{
+body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     background-position: 0% 20%;
-    
 }
-#backplate{
+
+#backplate {
     padding: 0;
 }
 
-#leftSection{
-    font-family: "BG";
+#leftSection {
     background-color: #6F06FB;
     letter-spacing: 0.34px;
     height: 100vh;
     padding-top: 25vh;
 }
-#rightSection{
+
+#rightSection {
     background-color: #332E4D;
     height: 100vh;
     /*padding-top: 25vh;*/
 }
+
+
 /*#featuresTag{
     width: 100px;
     background-color: #6F06FB;
@@ -31,6 +33,8 @@ body{
     padding: 2px 15px 2px 15px;
     border-radius: 2px;
 }*/
+
+
 /*#infoSectionFeatures{
     padding-top: 50px;
     font-size: 18px;
@@ -39,10 +43,12 @@ body{
     line-height: 50px;
     padding-bottom: 100px;
 }*/
-#trakrLogo{
+
+#trakrLogo {
     width: 150px;
 }
-#menu{
+
+#menu {
     position: relative;
     bottom: 0;
     padding-top: 50vh;
@@ -51,29 +57,33 @@ body{
     /*font-style: italic;*/
     font-size: 18px;
 }
-a{
+
+a {
     color: white;
 }
-a:hover{
+
+a:hover {
     color: #ff7676;
     text-decoration: none;
 }
-#loginArea{
+
+#loginArea {
     color: #342B60;
     max-height: 400px;
     max-width: 400px;
     background: #F8F8F8;
-    box-shadow: 0 0 56px 9px rgba(28,28,28,0.56);
-
+    box-shadow: 0 0 56px 9px rgba(28, 28, 28, 0.56);
     position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     /*height: 80%;*/
     height: 70%;
     width: 70%;
     /*background: red;*/
 }
-#loginBlock{
+
+#loginBlock {
     padding-top: 60px;
     /*position: absolute;
     top: 50%; left: 50%;
@@ -83,7 +93,7 @@ a:hover{
     background: red;*/
 }
 
-.loginTitles{
+.loginTitles {
     position: absolute;
     font-family: "BG";
     font-weight: 400;
@@ -91,30 +101,31 @@ a:hover{
     margin-top: 23px;
     color: #332E4D;
     letter-spacing: 1.87px;
-
 }
 
-#usernameInput, #passwordInput{
-
+#usernameInput,
+#passwordInput {
     width: 100%;
     height: 70px;
     font-family: "BG";
     font-weight: 300;
     font-size: 0.6em;
     color: #463C70;
-    background: rgba(149,124,255,0.07);
+    background: rgba(149, 124, 255, 0.07);
     border: 0;
     outline: none !important;
     max-width: 100%;
     overflow-x: hidden;
-
 }
-#loginSignupButtons{
+
+#loginSignupButtons {
     position: relative;
     bottom: -50px;
     width: 100%;
 }
-#loginButton, #signupButton{
+
+#loginButton,
+#signupButton {
     color: white;
     height: 70px;
     font-family: "BG";
@@ -126,10 +137,13 @@ a:hover{
     outline: none !important;
     background: #6F06FB;
 }
-#loginButton:hover, #signupButton:hover{
+
+#loginButton:hover,
+#signupButton:hover {
     background-color: #5C06D0;
 }
-#errorBar{
+
+#errorBar {
     font-family: "BG";
     font-weight: 700;
     font-style: italic;
@@ -137,22 +151,22 @@ a:hover{
     color: #ff7676;
     letter-spacing: 1.08px;
 }
-#features{
+
+#features {
     /*margin-top: 300px;*/
-    
     top: 0;
 }
-.feature{
 
+.feature {
     /*height: 60vh;*/
     height: 60vh;
 }
 
-#footerbar{
+#footerbar {
     position: relative;
     bottom: 0;
     height: 50px;
-    width:100%;
+    width: 100%;
     margin: 0;
     background-color: #6F06FB;
     padding-top: 15px;
@@ -161,13 +175,14 @@ a:hover{
     font-family: "BG";
     font-weight: 100;
     letter-spacing: -0.55px;
+}
 
-}
 .img-center {
-    margin:0 auto;
+    margin: 0 auto;
 }
-.undraggable{
-    user-drag: none; 
+
+.undraggable {
+    user-drag: none;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;

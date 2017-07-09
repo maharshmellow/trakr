@@ -23,7 +23,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{% static 'trakr/js/scripts.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body>
@@ -31,60 +30,29 @@
         <div class="row" id="mainRow">
             <div class="row">
                 <div class="col-md-2"></div>
-                <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/logo.png' %}"> <br></div>
+                <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/darklogo.png' %}">
+                    <br>
+                </div>
                 <div class="col-md-2"></div>
             </div>
-
-            
-        <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div>
+            <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
         </div>
-
         <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
     </div>
-
-
 </body>
 <script>
-// // CREATE A USER
-// firebase.auth().createUserWithEmailAndPassword("patel@maharsh.net", "password").catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-//
-//   console.log(errorCode);
-//   console.log(errorMessage);
-// });
-
-// // SIGN IN USER
-// firebase.auth().signInWithEmailAndPassword("patel@maharsh.net", "maharsh").catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-//
-//   console.log(errorCode);
-//   console.log(errorMessage);
-// });
-
-// // CHECK IF USER SIGNED IN - GET ID
-// firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     // User is signed in.
-//     console.log(user.uid);
-//   } else {
-//     // No user is signed in.
-//     console.log(2);
-//   }
-// });
-
-// // SIGN OUT USER
-// firebase.auth().signOut().then(function() {
-//   console.log('Signed Out');
-// }, function(error) {
-//   console.error('Sign Out Error', error);
-// });
-
+// check if the user is already logged in
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        firebase.auth().currentUser.getIdToken().then(function(idToken) {
+            alert(idToken);
+        }).catch(function(error) {
+            signout();
+        });
+    } else {
+        window.location.replace("/");
+    }
+});
 </script>
-
-
 
 </html>

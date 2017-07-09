@@ -11,40 +11,43 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{% static 'trakr/js/scripts.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
-<body>
+<body style="display: none">
     <div id="backplate" class="container-fluid">
         <div class="row" id="splash">
             <div class="col-md-5" id="leftSection">
                 <div class="row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/logo.png' %}"> <br></div>
+                    <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/logo.png' %}">
+                        <br>
+                    </div>
                     <div class="col-md-2"></div>
                 </div>
                 <div class="row">
                     <div id="menu" class="col-md-12 center-block text-center">
-                        <a href="#features">Features</a> <br> <a href="#">Uses</a> <br> <a href="#">Contact</a>
+                        <a href="#features">Features</a>
+                        <br> <a href="#">Uses</a>
+                        <br> <a href="#">Contact</a>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-7" id="rightSection">
                 <div id="loginArea" class="center-block">
                     <div class="col-md-1 hidden-sm"></div>
                     <div id="loginBlock" class="col-md-10 col-xs-12">
-                        <span class="loginTitles"> EMAIL </span><br>
+                        <span class="loginTitles"> EMAIL </span>
+                        <br>
                         <h1 class="loginInputs">
                             <input id="usernameInput" name="username" type="text"></input>
                         </h1>
-
-                        <span class="loginTitles"> PASSWORD </span><br>
+                        <span class="loginTitles"> PASSWORD </span>
+                        <br>
                         <h1 class="loginInputs">
                             <input id="passwordInput" name="password" type="password"></input>
                         </h1>
-                        <div id="errorBar" class="text-center">
-                            Invalid Login
+                        <div id="errorBar" class="text-center" style="visibility:hidden">
+                            Invalid
                         </div>
                     </div>
                     <div class="col-md-1 hidden-sm"></div>
@@ -54,7 +57,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <div id="features">
             <div class="row feature" style="background: rgba(149,124,255,0.07);">
@@ -65,63 +67,21 @@
             </div>
             <div class="row feature" style="background: rgba(149,124,255,0.10);">
             </div>
-
-
-
-
         </div>
-           
-      
-
         <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div>
-
-
         <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
     </div>
-
-
 </body>
 <script>
-// // CREATE A USER
-// firebase.auth().createUserWithEmailAndPassword("patel@maharsh.net", "password").catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-//
-//   console.log(errorCode);
-//   console.log(errorMessage);
-// });
 
-// // SIGN IN USER
-// firebase.auth().signInWithEmailAndPassword("patel@maharsh.net", "maharsh").catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-//
-//   console.log(errorCode);
-//   console.log(errorMessage);
-// });
-
-// // CHECK IF USER SIGNED IN - GET ID
-// firebase.auth().onAuthStateChanged(function(user) {
-//   if (user) {
-//     // User is signed in.
-//     console.log(user.uid);
-//   } else {
-//     // No user is signed in.
-//     console.log(2);
-//   }
-// });
-
-// // SIGN OUT USER
-// firebase.auth().signOut().then(function() {
-//   console.log('Signed Out');
-// }, function(error) {
-//   console.error('Sign Out Error', error);
-// });
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        window.location.replace("/home");
+    }else{
+        // show the login page if the user isn't logged in
+        document.getElementsByTagName("body")[0].style.display = "block";
+    }
+});
 
 </script>
-
-
-
 </html>
