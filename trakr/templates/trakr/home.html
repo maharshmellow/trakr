@@ -6,20 +6,8 @@
     <meta charset="utf-8" /> {% load static %}
     <link rel="stylesheet" href="{% static 'trakr/css/bootstrap.min.css' %}" type="text/css" />
     <link rel="stylesheet" href="{% static 'trakr/css/fonts.css' %}" type="text/css" />
-    <link rel="stylesheet" href="{% static 'trakr/css/styles.css' %}" type="text/css" />
+    <!-- <link rel="stylesheet" href="{% static 'trakr/css/styles.css' %}" type="text/css" /> -->
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    <!-- <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyAiCNv_Pnzrr1l2qUE4zSQiFxqQHMKHspw",
-            authDomain: "trakr-39dff.firebaseapp.com",
-            databaseURL: "https://trakr-39dff.firebaseio.com",
-            projectId: "trakr-39dff",
-            storageBucket: "",
-            messagingSenderId: "712101225728"
-        };
-        firebase.initializeApp(config);
-    </script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="{% static 'trakr/js/scripts.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,38 +17,62 @@
     <div id="backplate" class="container-fluid">
         <div class="row" id="mainRow">
             <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8"><img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/darklogo.png' %}">
-                    <br>
-                <span id="info" style="color: red"></span>
+                <div class="col-md-4" style="background-color: grey">
+                    <img id="trakrLogo" class="center-block img-responsive img-center undraggable" src="{% static 'trakr/images/svglogodark.svg' %}">
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-4" style="background-color: grey">
+                <!-- <span id="info" style="color: red"></span> -->
+                </div>
+                <div class="col-md-4 text-center" style="background-color: grey">
+                    <a href="#" class="menuitem">Home</a>   <a href="#" class="menuitem">Account</a>   <a href="#" class="menuitem">Status</a>   <a href="#" class="menuitem">Logout</a> 
+                </div>
             </div>
             <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
         </div>
         <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
     </div>
 </body>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-position: 0% 20%;
+    background-color: red;
+    padding-top: 10vh;
+}
+#backplate {
+    padding: 0;
+}
+
+#trakrLogo{
+    width: 150px;
+}
+.menuitem{
+    margin: 10px;
+    font-size: 20px;
+}
+</style>
 <script>
 // check if the user is already logged in
 
 //TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION 
-firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        firebase.auth().currentUser.getIdToken().then(function(idToken) {
+// firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//         firebase.auth().currentUser.getIdToken().then(function(idToken) {
             
-            // TODO DO THE REQUEST HERE 
-            // $.get("/home", ...
+//             // TODO DO THE REQUEST HERE 
+//             // $.get("/home", ...
 
-            var info = "Email: " + user.email + "<br>ID:" + user.uid + "<br>Token:" + idToken; 
-            document.getElementById("info").innerHTML = info;
-        }).catch(function(error) {
-            signout();
-        });
-    } else {
-        window.location.replace("/");
-    }
-});
+//             var info = "Email: " + user.email + "<br>ID:" + user.uid + "<br>Token:" + idToken; 
+//             document.getElementById("info").innerHTML = info;
+//         }).catch(function(error) {
+//             signout();
+//         });
+//     } else {
+//         window.location.replace("/");
+//     }
+// });
 </script>
 
 </html>
