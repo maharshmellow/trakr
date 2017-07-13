@@ -33,7 +33,7 @@ class Update(Model):
     url = UnicodeAttribute(hash_key=True)
     last_checked = UTCDateTimeAttribute(null=True)
     last_updated = UTCDateTimeAttribute(null=True)
-    
+
 class Log(Model):
     class Meta:
         table_name = "updates"
@@ -43,7 +43,7 @@ class Log(Model):
     log_event = UnicodeAttribute(null=True)
     log_time = UTCDateTimeAttribute(null=True)
 
-    # log id =hashlib.md5(("some event" + str(int(time.time()))).encode("utf-8")).hexdigest(), 
+    # log id =hashlib.md5(("some event" + str(int(time.time()))).encode("utf-8")).hexdigest(),
 
 
 # if not User.exists():
@@ -56,4 +56,3 @@ class Log(Model):
 
 
 # print(User.get("as2932").payment)
-
