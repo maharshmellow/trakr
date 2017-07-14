@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="253.466152%" y1="-178.304953%" x2="50%" y2="254.894333%" id="linearGradient-1">
+            <stop stop-color="#133139" offset="0%"></stop>
+            <stop stop-color="#9012FE" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-3" fill="url(#linearGradient-1)">
+            <circle id="Oval" cx="7.5" cy="7.5" r="7.5"></circle>
+        </g>
+    </g>
+</svg>
