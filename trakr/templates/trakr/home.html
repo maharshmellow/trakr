@@ -16,41 +16,158 @@
 <body>
     <div id="backplate" class="container-fluid">
         <div class="row" id="mainRow">
-            <div class="row">
-                <div class="col-md-4" style="background-color: grey">
-                    <img id="trakrLogo" class="center-block img-responsive img-center undraggable" src="{% static 'trakr/images/svglogodark.svg' %}">
-                </div>
-                <div class="col-md-4" style="background-color: grey">
-                <!-- <span id="info" style="color: red"></span> -->
-                </div>
-                <div class="col-md-4 text-center" style="background-color: grey">
-                    <a href="#" class="menuitem">Home</a>   <a href="#" class="menuitem">Account</a>   <a href="#" class="menuitem">Status</a>   <a href="#" class="menuitem">Logout</a> 
-                </div>
+            <div class="col-md-1" style="background-color: lightgrey"></div>
+            <div class="col-md-3" style="background-color: lightgrey" id="test">
+                <img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/svglogodark.svg' %}">
             </div>
-            <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
+            <div class="col-md-3" style="background-color: lightgrey">
+                <!-- <span id="info" style="color: red"></span> -->
+            </div>
+            <div class="col-md-4 text-center" id="menu" style="background-color: lightgrey">
+                <a href="#" class="menuitem">Logout</a>
+                <a href="#" class="menuitem">Status</a> 
+                <a href="#" class="menuitem">Account</a> 
+                <a href="#" class="menuitem">Home</a> 
+            </div>
+            <div class="col-md-1" style="background-color: grey"></div>
         </div>
-        <!-- <div id="footerbar" class="text-center">Made with &hearts; by Maharsh Patel</div> -->
+        <br>
+        <div class="row">
+            <div class="col-md-10 col-md-push-1"  id="websites">
+                <div class="spacer"></div>
+                <div class="website">
+                    <div class="col-md-4">
+                        <div class="website_title">aaaaaaaaaa aaaaaaaaaa aaaaa</div>
+                        <div class="website_url">https://www.maharsh.net</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="modified_title">Last Modified</div>
+                        <div class="modified_value">June 12, 2017</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="check_title">Last Checked</div>
+                        <div class="check_value">July 12, 2017</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="services_title">Last Checked</div>
+                        <div class="website_url">July 12, 2017</div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="website_title text-center center-block">---</div>
+                    </div>
+                </div>
+                <hr>
+                <div class="website">
+                    <div class="col-md-4">
+                        <span class="website_title">aaaaaaaaaa aaaaaaaaaa aaaaa</span>
+                        <br>
+                        <span class="website_url">https://www.maharsh.net</span>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="modified_title">Last Modified</span>
+                        <br>
+                        <span class="modified_value">June 12, 2017</span>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="check_title">Last Checked</span>
+                        <br>
+                        <span class="check_value">July 12, 2017</span>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="services_title">Last Checked</span>
+                        <br>
+                        <span class="website_url">July 12, 2017</span>
+                    </div>
+                    <div class="col-md-1">
+                        <span class="website_title text-center center-block">---</span>
+                    </div>
+                </div>
+                <!-- <div class="website">
+                    <div class="col-md-4">asdf</div>
+                    <div class="col-md-2">asdf</div>
+                    <div class="col-md-2">asdf</div>
+                    <div class="col-md-1">ds</div>
+                </div> -->
+
+                <!-- <div class="website" style="background-color: lightgrey">asdf</div> -->
+            </div>
+            <!-- <div class="col-md-1" style="background-color: grey">sdf</div> -->
+            
+        </div>
     </div>
 </body>
 <style>
 body {
     margin: 0;
-    padding: 0;
+    padding: 2em;
     overflow-x: hidden;
     background-position: 0% 20%;
-    background-color: red;
     padding-top: 10vh;
 }
+
 #backplate {
     padding: 0;
 }
 
-#trakrLogo{
+#trakrLogo {
     width: 150px;
 }
-.menuitem{
-    margin: 10px;
-    font-size: 20px;
+#menu{
+    height: 50px;
+    padding: 0;
+}
+.menuitem {
+    margin: 13px;
+    float: right;
+    margin-top: 7px;
+    margin-right: 0;
+    font-size: 12px;
+    font-family: "Graphik-Semibold";
+    letter-spacing: -0.3;
+    color: #332E4D;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: #6F06FB;
+    text-decoration: none;
+}
+
+#mainrow {
+    width: 100%;
+}
+
+#test {
+    padding: 0;
+    /*background-color: blue;*/
+}
+
+#websites {
+    background-color: red;
+    height: 500px;
+}
+
+.website {
+    min-height:100px;
+    background-color: green;
+}
+.website_title{
+    /*padding: 1px;*/
+    /*margin-top: 30px;*/
+    /*padding-top: 10px;*/
+    color: white;
+}
+.spacer{
+    padding: 10px;
+}
+hr{
+    margin: 0;
+    width: 90%;
+    
+
 }
 </style>
 <script>
@@ -60,7 +177,7 @@ body {
 // firebase.auth().onAuthStateChanged(user => {
 //     if (user) {
 //         firebase.auth().currentUser.getIdToken().then(function(idToken) {
-            
+
 //             // TODO DO THE REQUEST HERE 
 //             // $.get("/home", ...
 
