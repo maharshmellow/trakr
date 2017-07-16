@@ -9,3 +9,9 @@ def index(request):
 
 def home(request):
     return render(request, "trakr/home.html")
+
+def account(request):
+    return render(request, "trakr/account.html")
+
+def logout(request):
+    return render(request, "trakr/logout.html")
