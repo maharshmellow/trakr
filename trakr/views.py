@@ -13,5 +13,8 @@ def home(request):
 def account(request):
     return render(request, "trakr/account.html")
 
+def status(request):
+    return render(request, "trakr/status.html")
+
 def logout(request):
     return render(request, "trakr/logout.html")
