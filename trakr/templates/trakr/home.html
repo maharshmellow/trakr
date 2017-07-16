@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2333" class="btTxt submit" id="saveForm" style="padding-top:2px; padding-left: 20px; opacity: 0.3" />
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -93,7 +93,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2333" class="btTxt submit" id="saveForm" style="padding-top:2px; padding-left: 20px; opacity: 0.3" />
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2222" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -128,7 +128,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2333" class="btTxt submit" id="saveForm" style="padding-top:2px; padding-left: 20px; opacity: 0.3" />
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="3333" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -163,7 +163,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2333" class="btTxt submit" id="saveForm" style="padding-top:2px; padding-left: 20px; opacity: 0.3" />
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="4444" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -198,11 +198,13 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2333" class="btTxt submit" id="saveForm" style="padding-top:2px; padding-left: 20px; opacity: 0.3" />
+                            <!-- TODO the name attribute here will be replaced with the id of the website for that particular user -->
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="5555" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
                 </div>
+
                 <!-- <div class="website">
                     <div class="col-md-4">asdf</div>
                     <div class="col-md-2">asdf</div>
@@ -311,6 +313,9 @@ hr {
 }
 </style>
 <script>
+function editItem(itemId){
+    alert(itemId);
+}
 // check if the user is already logged in
 
 //TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION 
