@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-4 text-center" id="menu">
                 <a href="#" class="menuitem">Logout</a>
-                <a href="#" class="menuitem">Status</a>
+                <a href="" class="menuitem">Status</a>
                 <a href="#" class="menuitem">Account</a>
                 <a href="/home" class="menuitem">Home</a>
             </div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-1">
                         <div class="extra">
-                            <img src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
+                            <img src="{% static 'trakr/images/orb.svg' %}" class="pulse" style="padding-left: 10px;"></img>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -77,7 +77,7 @@
                     </div>
                     <div class="col-md-1">
                         <div class="extra">
-                            <img src="{% static 'trakr/images/status_bad.svg' %}" style="padding-left: 10px;"></img>
+                            <img src="{% static 'trakr/images/status_bad.svg' %}" class="pulse" style="padding-left: 10px;"></img>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -103,14 +103,11 @@
                     </div>
                     <div class="col-md-1">
                         <div class="extra">
-                            <img src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
+                            <img src="{% static 'trakr/images/orb.svg' %}" class="pulse" style="padding-left: 10px;"></img>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
                 </div>
-                
-                
-
                 <!-- <div class="server">
                     <div class="col-md-4">asdf</div>
                     <div class="col-md-2">asdf</div>
@@ -186,7 +183,6 @@ a:hover {
     /*background-color: green;*/
 }
 
-
 .server_title,
 .downtime_title,
 .message_title,
@@ -200,9 +196,10 @@ a:hover {
     color: #332E4D;
 }
 
-.extra{
+.extra {
     padding-left: 10px;
 }
+
 .server_value,
 .downtime_value,
 .message_value,
@@ -217,9 +214,34 @@ a:hover {
 hr {
     margin: 0;
 }
+
+.pulse {
+    animation: pulse 0.5s infinite;
+    animation-direction: alternate;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: scale(1);
+    }
+    100% {
+        -webkit-transform: scale(1.1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
 </style>
 <script>
-function editItem(itemId){
+function editItem(itemId) {
     alert(itemId);
 }
 // check if the user is already logged in
