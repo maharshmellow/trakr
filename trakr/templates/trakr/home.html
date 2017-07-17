@@ -16,12 +16,13 @@
 <body>
     <div id="backplate" class="container-fluid">
         <div class="row" id="mainRow">
+            <div id="infoMessage"></div>
             <div class="col-md-1"></div>
             <div class="col-md-3" id="trakrLogoDiv">
                 <img id="trakrLogo" class="img-responsive img-center undraggable" src="{% static 'trakr/images/svglogodark.svg' %}">
             </div>
             <div class="col-md-3">
-                <!-- <span id="info" style="color: red"></span> -->
+                <!-- asdf -->
             </div>
             <div class="col-md-4 text-center" id="menu">
                 <a href="#" class="menuitem">Logout</a>
@@ -59,7 +60,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -93,42 +94,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2222" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
-                        </div>
-                    </div>
-                    <!-- <div class="spacer1"></div> -->
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <hr>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="website">
-                    <!-- <div class="spacer1"></div> -->
-                    <div class="col-md-4">
-                        <div class="website_title">Jason Lang Scholarship</div>
-                        <div class="website_value">http://ualberta.ca/jasonlang</div>
-                    </div>
-                    <div class="col-md-2 ">
-                        <div class="modified_title">Last Modified</div>
-                        <div class="modified_value">June 12, 2017</div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="check_title">Last Checked</div>
-                        <div class="check_value">July 15, 2017 9:30PM</div>
-                    </div>
-                   <div class="col-md-2">
-                        <div class="services_title">Services</div>
-                        <div class="services_value">Email, SMS, Slack, API</div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="extra">
-                            <img src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
-                        </div>
-                    </div>
-                    <div class="col-md-1 center-block">
-                        <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="3333" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2222" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -163,7 +129,42 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="4444" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="3333" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
+                        </div>
+                    </div>
+                    <!-- <div class="spacer1"></div> -->
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <hr>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="website">
+                    <!-- <div class="spacer1"></div> -->
+                    <div class="col-md-4">
+                        <div class="website_title">Jason Lang Scholarship</div>
+                        <div class="website_value">http://ualberta.ca/jasonlang</div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div class="modified_title">Last Modified</div>
+                        <div class="modified_value">June 12, 2017</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="check_title">Last Checked</div>
+                        <div class="check_value">July 15, 2017 9:30PM</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="services_title">Services</div>
+                        <div class="services_value">Email, SMS, Slack, API</div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="extra">
+                            <img src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
+                        </div>
+                    </div>
+                    <div class="col-md-1 center-block">
+                        <div class="extra">
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="4444" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -199,12 +200,11 @@
                     <div class="col-md-1 center-block">
                         <div class="extra">
                             <!-- TODO the name attribute here will be replaced with the id of the website for that particular user -->
-                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="5555" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
+                            <input type="image" src="{% static 'trakr/images/orb3.svg' %}" name="5555" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
                 </div>
-
                 <!-- <div class="website">
                     <div class="col-md-4">asdf</div>
                     <div class="col-md-2">asdf</div>
@@ -236,6 +236,19 @@ body {
 
 #trakrLogoDiv {
     padding: 0;
+}
+
+#infoMessage {
+    display: none;
+    width: 100%;
+    background-color: #6F06FB;
+    color: white;
+    font-family: "Graphik-Regular";
+    font-size: 12px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #menu {
@@ -280,7 +293,6 @@ a:hover {
     /*background-color: green;*/
 }
 
-
 .website_title,
 .modified_title,
 .check_title,
@@ -294,9 +306,10 @@ a:hover {
     color: #332E4D;
 }
 
-.extra{
+.extra {
     padding-left: 10px;
 }
+
 .website_value,
 .modified_value,
 .check_value,
@@ -313,9 +326,19 @@ hr {
 }
 </style>
 <script>
-function editItem(itemId){
+function editItem(itemId) {
     alert(itemId);
 }
+
+function setInfoMessage(message) {
+    document.getElementById("infoMessage").style.display = "block";
+    document.getElementById("infoMessage").innerHTML = message;
+}
+
+// TODO need to get these values from the database and not manually
+setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
+
+
 // check if the user is already logged in
 
 //TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION 
