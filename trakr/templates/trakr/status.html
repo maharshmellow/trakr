@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-md-1">
                         <div class="extra">
-                            <img src="{% static 'trakr/images/orb.svg' %}" class="pulse" style="padding-left: 10px;"></img>
+                            <img src="{% static 'trakr/images/orb.svg' %}" class="pulse undraggable" style="padding-left: 10px;"></img>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -78,7 +78,7 @@
                     </div>
                     <div class="col-md-1">
                         <div class="extra">
-                            <img src="{% static 'trakr/images/status_bad.svg' %}" class="pulse" style="padding-left: 10px;"></img>
+                            <img src="{% static 'trakr/images/status_bad.svg' %}" class="pulse undraggable" style="padding-left: 10px;"></img>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-md-1">
                         <div class="extra">
-                            <img src="{% static 'trakr/images/orb.svg' %}" class="pulse" style="padding-left: 10px;"></img>
+                            <img src="{% static 'trakr/images/orb.svg' %}" class="pulse undraggable" style="padding-left: 10px;"></img>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -226,7 +226,7 @@ a:hover {
 }
 
 hr {
-    margin: 0;
+    margin: 0;class="undraggable" 
 }
 
 .pulse {
@@ -253,14 +253,18 @@ hr {
         transform: scale(1.1);
     }
 }
+
+.undraggable{
+    user-drag: none; 
+    -moz-user-select: none; 
+    -webkit-user-drag: none;
+}
 </style>
 <script>
-function setInfoMessage(message) {
-    document.getElementById("infoMessage").style.display = "block";
-    document.getElementById("infoMessage").innerHTML = message;
-}
 
-setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
+
+// setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
+
 // check if the user is already logged in
 
 //TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION 

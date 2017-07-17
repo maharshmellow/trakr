@@ -87,3 +87,8 @@ function getCookie(name) {
     return cookieValue;
 }
 
+function setInfoMessage(message) {
+    document.getElementById("infoMessage").style.display = "block";
+    document.getElementById("infoMessage").innerHTML = message;
+}
+
