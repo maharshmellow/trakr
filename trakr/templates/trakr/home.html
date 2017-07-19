@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
+                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -313,21 +313,22 @@ a:hover {
     padding-bottom: 35px;
     color: #A9A5BC;
 }
+
 hr {
     margin: 0;
 }
 
-
-#addButton{
+#addButton {
     padding-top: 50px;
 }
-#addButton:focus{
-    outline:0;
+
+#addButton:focus {
+    outline: 0;
 }
 
-.undraggable{
-    user-drag: none; 
-    -moz-user-select: none; 
+.undraggable {
+    user-drag: none;
+    -moz-user-select: none;
     -webkit-user-drag: none;
 }
 </style>
@@ -336,10 +337,19 @@ function editItem(itemId) {
     alert(itemId);
 }
 
-function addItem(){
+function addItem() {
     // display the page 
-    alert("asdf");
 }
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        firebase.auth().currentUser.getIdToken().then(function(idToken) {
+            console.log(idToken);
+        }).catch(function(error) {
+            signout();
+        });
+    }
+});
 
 // TODO need to get these values from the database and store it
 //setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
