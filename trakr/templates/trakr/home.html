@@ -203,18 +203,11 @@
                             <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="5555" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
                         </div>
                     </div>
-                    <!-- <div class="spacer1"></div> -->
                 </div>
-                <!-- <div class="website">
-                    <div class="col-md-4">asdf</div>
-                    <div class="col-md-2">asdf</div>
-                    <div class="col-md-2">asdf</div>
-                    <div class="col-md-1">ds</div>
-                </div> -->
-                <!-- <div class="website" style="background-color: lightgrey">asdf</div> -->
             </div>
             <!-- <div class="col-md-1" style="background-color: grey">sdf</div> -->
         </div>
+        <input id="addButton" class="undraggable center-block" type="image" src="{% static 'trakr/images/add_button.svg' %}" name="5555" onclick="addItem()" />
     </div>
 </body>
 <style>
@@ -320,9 +313,16 @@ a:hover {
     padding-bottom: 35px;
     color: #A9A5BC;
 }
-
 hr {
     margin: 0;
+}
+
+
+#addButton{
+    padding-top: 50px;
+}
+#addButton:focus{
+    outline:0;
 }
 
 .undraggable{
@@ -336,9 +336,13 @@ function editItem(itemId) {
     alert(itemId);
 }
 
+function addItem(){
+    // display the page 
+    alert("asdf");
+}
 
 // TODO need to get these values from the database and store it
-// setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
+//setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
 
 
 // check if the user is already logged in
