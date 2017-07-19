@@ -236,7 +236,7 @@ body {
     width: 100%;
     background-color: #6F06FB;
     color: white;
-    font-family: "Graphik-Regular";
+    font-family: "trakr_text_regular";
     font-size: 12px;
     padding: 10px;
     position: absolute;
@@ -255,7 +255,7 @@ body {
     margin-top: 7px;
     margin-right: 0;
     font-size: 12px;
-    font-family: "Graphik-Semibold";
+    font-family: "trakr_text_semibold";
     letter-spacing: -0.3;
     color: #332E4D;
 }
@@ -307,7 +307,7 @@ a:hover {
 .modified_value,
 .check_value,
 .services_value {
-    font-family: "Graphik-Regular";
+    font-family: "trakr_text_regular";
     letter-spacing: -0.3;
     font-size: 12px;
     padding-bottom: 35px;
@@ -341,15 +341,15 @@ function addItem() {
     // display the page 
 }
 
-firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        firebase.auth().currentUser.getIdToken().then(function(idToken) {
-            console.log(idToken);
-        }).catch(function(error) {
-            signout();
-        });
-    }
-});
+// firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//         firebase.auth().currentUser.getIdToken().then(function(idToken) {
+//             console.log(idToken);
+//         }).catch(function(error) {
+//             signout();
+//         });
+//     }
+// });
 
 // TODO need to get these values from the database and store it
 //setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");

@@ -52,7 +52,7 @@ body {
     position: relative;
     bottom: 0;
     padding-top: 50vh;
-    font-family: "BG";
+    font-family: "trakr_fancy";
     font-weight: 200;
     /*font-style: italic;*/
     font-size: 18px;
@@ -95,7 +95,7 @@ a:hover {
 
 .loginTitles {
     position: absolute;
-    font-family: "BG";
+    font-family: "trakr_fancy";
     font-weight: 400;
     font-size: 1.1em;
     margin-top: 23px;
@@ -107,7 +107,7 @@ a:hover {
 #passwordInput {
     width: 100%;
     height: 70px;
-    font-family: "BG";
+    font-family: "trakr_fancy";
     font-weight: 300;
     font-size: 0.6em;
     color: #463C70;
@@ -128,7 +128,7 @@ a:hover {
 #signupButton {
     color: white;
     height: 70px;
-    font-family: "BG";
+    font-family: "trakr_fancy";
     font-weight: 300;
     font-size: 1.1em;
     color: #FFFFFF;
@@ -144,7 +144,7 @@ a:hover {
 }
 
 #errorBar {
-    font-family: "BG";
+    font-family: "trakr_fancy";
     font-weight: 700;
     font-style: italic;
     font-size: 16px;
@@ -172,7 +172,7 @@ a:hover {
     padding-top: 15px;
     padding-bottom: 15px;
     color: white;
-    font-family: "BG";
+    font-family: "trakr_fancy";
     font-weight: 100;
     letter-spacing: -0.55px;
 }
