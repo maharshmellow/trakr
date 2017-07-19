@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)"/>
+                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -294,7 +294,7 @@ body {
     width: 100%;
     background-color: #6F06FB;
     color: white;
-    font-family: "Graphik-Regular";
+    font-family: "trakr_text_regular";
     font-size: 12px;
     padding: 10px;
     position: absolute;
@@ -313,7 +313,7 @@ body {
     margin-top: 7px;
     margin-right: 0;
     font-size: 12px;
-    font-family: "Graphik-Semibold";
+    font-family: "trakr_text_semibold";
     letter-spacing: -0.3;
     color: #332E4D;
 }
@@ -365,25 +365,30 @@ a:hover {
 .modified_value,
 .check_value,
 .services_value {
-    font-family: "Graphik-Regular";
+    font-family: "trakr_text_regular";
     letter-spacing: -0.3;
     font-size: 12px;
     padding-bottom: 35px;
     color: #A9A5BC;
 }
+
 hr {
     margin: 0;
 }
 
-
-#addButton{
+#addButton {
     padding-top: 50px;
 }
-#addButton:focus{
-    outline:0;
+
+#addButton:focus {
+    outline: 0;
 }
 
+<<<<<<< HEAD
 .undraggable{
+=======
+.undraggable {
+>>>>>>> 91bcfe1773108a519e1b4c8c96a7bbede82d5fd7
     user-drag: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
@@ -394,10 +399,25 @@ function editItem(itemId) {
     alert(itemId);
 }
 
+<<<<<<< HEAD
 function addItem(){
     // display the page
     alert("asdf");
+=======
+function addItem() {
+    // display the page 
+>>>>>>> 91bcfe1773108a519e1b4c8c96a7bbede82d5fd7
 }
+
+// firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//         firebase.auth().currentUser.getIdToken().then(function(idToken) {
+//             console.log(idToken);
+//         }).catch(function(error) {
+//             signout();
+//         });
+//     }
+// });
 
 // TODO need to get these values from the database and store it
 //setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
