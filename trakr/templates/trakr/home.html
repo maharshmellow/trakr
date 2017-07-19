@@ -208,9 +208,67 @@
             <!-- <div class="col-md-1" style="background-color: grey">sdf</div> -->
         </div>
         <input id="addButton" class="undraggable center-block" type="image" src="{% static 'trakr/images/add_button.svg' %}" name="5555" onclick="addItem()" />
+
+<div class="z-depth-1">
+        <div id="yourdiv">
+          <div class="col-md-4 col-md-offset-4" style="background:red">
+            Website Name
+            <br>
+            <input id="pinkinput"/>
+            <br>
+            Website URL
+            <br>
+            <input id="pinkinput"/>
+            <br>
+            Frequency
+            <br>
+            <div id="fourcircle">
+            <img class="col-xl-3" src="{% static 'trakr/images/Circle.png' %}" style="width: 20px; height:20px"></img>
+            <img class="col-xl-3" src="{% static 'trakr/images/Circle.png' %}" style=" width: 20px; height:20px"></img>
+            <img class="col-xl-3" src="{% static 'trakr/images/Circle.png' %}" style="width: 20px; height:20px"></img>
+            <img class="col-xl-3" src="{% static 'trakr/images/Circle.png' %}" style=" width: 20px; height:20px"></img>
+          </div>
+          <div>
+            <div class="col-md-3">
+            1min</div> <div class="col-md-3"> 10min </div> <div class="col-md-3">1hour</div><div class="col-md-3"> 1day</div>
+            </div>
+            Notification
+            <br>
+            <img class="undraggable" src="{% static 'trakr/images/Circle.png' %}" style="padding-left: 10px; width: 30px; height:20px"></img>
+            yzhao9@ualberta.ca
+            <br>
+            <img class="undraggable" src="{% static 'trakr/images/Circle.png' %}" style="padding-left: 10px; width: 30px; height:20px"></img>
+            yuxuan@yuxuanz.com
+            <br>
+            <img class="undraggable" src="{% static 'trakr/images/Circle.png' %}" style="padding-left: 10px; width: 30px; height:20px"></img>
+            17807291558
+            <br>
+            Webhooks(optional)
+            <br>
+            <input/ id="pinkinput">
+
+          </div>
+        </div>
+      </div>
     </div>
+
 </body>
 <style>
+
+#yourdiv{
+  background-color: red;
+
+
+}
+#pinkinput{
+  background-color: pink;
+  width: 100%;
+  border: none;
+}
+#pinkinput:focus{
+  outline: none;
+}
+
 body {
     margin: 0;
     padding: 2em;
@@ -326,8 +384,8 @@ hr {
 }
 
 .undraggable{
-    user-drag: none; 
-    -moz-user-select: none; 
+    user-drag: none;
+    -moz-user-select: none;
     -webkit-user-drag: none;
 }
 </style>
@@ -337,7 +395,7 @@ function editItem(itemId) {
 }
 
 function addItem(){
-    // display the page 
+    // display the page
     alert("asdf");
 }
 
@@ -347,15 +405,15 @@ function addItem(){
 
 // check if the user is already logged in
 
-//TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION 
+//TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION
 // firebase.auth().onAuthStateChanged(user => {
 //     if (user) {
 //         firebase.auth().currentUser.getIdToken().then(function(idToken) {
 
-//             // TODO DO THE REQUEST HERE 
+//             // TODO DO THE REQUEST HERE
 //             // $.get("/home", ...
 
-//             var info = "Email: " + user.email + "<br>ID:" + user.uid + "<br>Token:" + idToken; 
+//             var info = "Email: " + user.email + "<br>ID:" + user.uid + "<br>Token:" + idToken;
 //             document.getElementById("info").innerHTML = info;
 //         }).catch(function(error) {
 //             signout();
