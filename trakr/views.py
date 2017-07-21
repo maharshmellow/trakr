@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import firebase_admin
 from firebase_admin import auth
 from firebase_admin import credentials
+import json
+import time
 
 cred = credentials.Certificate("trakr/keys/trakr-39dff-firebase-adminsdk-h091m-d33131032e.json")
 default_app = firebase_admin.initialize_app(cred)
@@ -31,3 +33,13 @@ def getDecodedToken(token):
         return False
 
 
+def getUserData(request):
+    if request.method == "POST":
+        # verify the token
+        decoded_token = getDecodedToken(request.POST.get("token"))
+        if not decoded_token:
+            return HttpResponse(json.dumps({"status":0}))
+        # add the user into the database if not there already
+        # return all information back and add to the render as a json object
+
+        return HttpResponse(json.dumps({"status":1, "uid":decoded_token["uid"]}))
