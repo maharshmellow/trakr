@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body style="display: none">
     <div id="backplate" class="container-fluid">
         <div class="row" id="mainRow">
             <div id="infoMessage"></div>
@@ -487,6 +487,41 @@ function addItem() {
     // display the page
 }
 
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        firebase.auth().currentUser.getIdToken().then(function(idToken) {
+            // get the user data
+            var formdata = new FormData();
+            formdata.append("token", idToken);
+            formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"));
+
+            $.ajax({
+                type: 'POST',
+                url: 'getUserData',
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    var response = JSON.parse(data);
+
+                    if (response.status == 0){
+                        console.log("0")
+                        signout();
+                    }
+                    console.log(response);
+                    document.getElementsByTagName("body")[0].style.display = "block";
+                },
+            });
+
+
+        }).catch(function(error) {
+            signout();
+        });
+    }
+    else{
+        window.location.replace("/");
+    }
+});
 // firebase.auth().onAuthStateChanged(user => {
 //     if (user) {
 //         firebase.auth().currentUser.getIdToken().then(function(idToken) {

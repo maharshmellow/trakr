@@ -41,5 +41,5 @@ def getUserData(request):
             return HttpResponse(json.dumps({"status":0}))
         # add the user into the database if not there already
         # return all information back and add to the render as a json object
-
+        # backend branch test
         return HttpResponse(json.dumps({"status":1, "uid":decoded_token["uid"]}))
