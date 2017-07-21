@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body style="display: none">
+<body>
     <div id="backplate" class="container-fluid">
         <div class="row" id="mainRow">
             <div id="infoMessage"></div>
@@ -222,8 +222,8 @@
             <div class="col-md-1 col-xs-2"></div>
           </div>
           <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 text-center">
+            <div class="col-md-1 col-xs-2"></div>
+            <div class="col-md-10 col-xs-8 text-center">
               <div id="add_item_label" style="float: left;padding-top:10px;">Website Url</div>
               <input class="add_item_input" id="website_name_input"/>
             </div>
@@ -487,41 +487,15 @@ function addItem() {
     // display the page
 }
 
-firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        firebase.auth().currentUser.getIdToken().then(function(idToken) {
-            // get the user data 
-            var formdata = new FormData();
-            formdata.append("token", idToken);
-            formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"));
-
-            $.ajax({
-                type: 'POST', 
-                url: 'getUserData',
-                data: formdata,
-                contentType: false,
-                processData: false,
-                success: function(data) {
-                    var response = JSON.parse(data);
-
-                    if (response.status == 0){
-                        console.log("0")
-                        signout();
-                    }
-                    console.log(response);
-                    document.getElementsByTagName("body")[0].style.display = "block";
-                },
-            });
-
-
-        }).catch(function(error) {
-            signout();
-        });
-    }
-    else{
-        window.location.replace("/");
-    }
-});
+// firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//         firebase.auth().currentUser.getIdToken().then(function(idToken) {
+//             console.log(idToken);
+//         }).catch(function(error) {
+//             signout();
+//         });
+//     }
+// });
 
 // TODO need to get these values from the database and store it
 //setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
