@@ -212,99 +212,117 @@
         <div class="col-md-4 col-md-offset-4" id="add_item_menu" style="overflow: hidden;">
           <br>
           <br>
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div id="add_item_label">Website Name</div>
-            <div class="col-md-2"></div>
-          </div>
 
           <div class="row">
-            <div class="col-md-2"></div>
-            <input class="col-md-8 add_item_input" id="website_name_input"/>
-            <div class="col-md-2"></div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-2"></div>
-            <div id="add_item_label">Website URL</div>
-            <div class="col-md-2"></div>
-            <input class="col-md-8 add_item_input" id="website_url_input" />
-            <div class="col-md-2"></div>
-          </div>
-          <br>
-            <div class="row">
-              <div class="col-md-2"></div>
-              <div id="add_item_label" style="padding-bottom:10px">Frequency</div>
-              <div class="col-md-2"></div>
+            <div class="col-md-1 col-xs-2"></div>
+            <div class="col-md-10 col-xs-8 text-center">
+              <div id="add_item_label" style="float: left; padding-top:10px; ">Website Name</div>
+              <input class="add_item_input" id="website_name_input"/>
             </div>
+            <div class="col-md-1 col-xs-2"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-xs-2"></div>
+            <div class="col-md-10 col-xs-8 text-center">
+              <div id="add_item_label" style="float: left;padding-top:10px;">Website Url</div>
+              <input class="add_item_input" id="website_name_input"/>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 text-center">
+              <div id="add_item_label" style="float: left; padding-top:10px; " >Frequency</div>
+
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <br>
 
             <div class="row">
-            <div class="col-md-2"></div>
             <div id="fourcircle" class="row">
-                <div class="col-md-2 text-center">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-2 text-center">
                     <img class="center-block" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"></img>
-
                     <div id="frequencyoption">1min</div>
                 </div>
 
-                <div class="col-md-2 text-center">
+                <div class="col-xs-2 text-center">
                     <img class="center-block" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"></img>
-
                   <div id="frequencyoption">1min</div>
                 </div>
-                <div class="col-md-2 text-center">
+                <div class="col-xs-2 text-center">
                     <img class="center-block" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"></img>
                     <div id="frequencyoption">1min</div>
                 </div>
-                <div class="col-md-2 text-center">
+                <div class="col-xs-2 text-center">
                     <img class="center-block" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"></img>
 
                     <div id="frequencyoption">1min</div>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-xs-2"></div>
               </div>
             </div>
 
           <div class="row">
-            <div class="col-md-2"></div>
-            <div id="add_item_label col-md-8">Notification</div>
-            <div class="col-md-2"></div>
+            <div class="col-md-1"></div>
+            <div id="add_item_label" class="col-md-10">Notification</div>
+            <div class="col-md-1"></div>
           </div>
+
           <div class="row">
-            <div class="col-md-2"></div>
-            <div id="notification_option">
-                <img class="undraggable notification_option_button" src="{% static 'trakr/images/checkbox_inactive.svg' %}"></img>
-                yzhao9@ualberta.ca
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div id="notification_option">
+                  <img class="undraggable notification_option_button " src="{% static 'trakr/images/checkbox_inactive.svg' %}"></img>
+                  yzhao9@ualberta.ca
+              </div>
+              <div id="notification_option">
+                  <img class="undraggable notification_option_button " src="{% static 'trakr/images/checkbox_inactive.svg' %}" ></img>
+                  yzhao9@ualberta.ca
+              </div>
+              <div id="notification_option">
+                  <img class="undraggable notification_option_button " src="{% static 'trakr/images/checkbox_inactive.svg' %}"></img>
+                  yzhao9@ualberta.ca
+              </div>
+              <div id="notification_option">
+                  <img class="undraggable notification_option_button " src="{% static 'trakr/images/checkbox_inactive.svg' %}"></img>
+                  yzhao9@ualberta.ca
+              </div>
             </div>
-            <div class="col-md-2"></div>
-            <div id="notification_option">
-                <img class="undraggable notification_option_button" src="{% static 'trakr/images/checkbox_inactive.svg' %}" ></img>
-                yzhao9@ualberta.ca
+            <div class="col-md-1"></div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 text-center">
+              <div id="add_item_label" style="float: left; padding-top:10px;">Webhook(optional)</div>
+              <input class="add_item_input" id="website_name_input"/>
             </div>
-            <div class="col-md-2"></div>
-            <div id="notification_option">
-                <img class="undraggable notification_option_button" src="{% static 'trakr/images/checkbox_inactive.svg' %}"></img>
-                yzhao9@ualberta.ca
-            </div>
+            <div class="col-md-1"></div>
           </div>
-            <div class="row">
-            <div class="col-md-2"></div>
-            <div id="add_item_label" style="padding-bottom:5px;">Webhook (optional)</div>
-            <div class="col-md-2"></div>
-          </div>
-            <div class="row">
-            <div class="col-md-2"></div>
-            <input class="col-md-8 add_item_input" id="webhook_input"></input>
-            <div class="col-md-2"></div>
-          </div>
-          <br>
-          <br>
-          <br>
-          <br>
+
+          <button class="center-block" id="submitbutton">Submit</button>
       </div>
     </div>
 </body>
 <style>
+#submitbutton{
+  margin-top: 100px;
+  background: #6F06FB;
+  border-radius: 90px;
+  outline:none;
+  border: none;
+  width: 180px;
+  height: 40px;
+  color: white;
+
+
+
+
+}
 #notification_option{
   padding-bottom: 4px;
 }
@@ -322,8 +340,9 @@
 
 .add_item_input {
     line-height: 3em;
-
-    background-color: #FCFAFF;
+    width: 100%;
+    background-color: red;
+    /*background-color: #FCFAFF;*/
     border: none;
 }
 
@@ -471,13 +490,13 @@ function addItem() {
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         firebase.auth().currentUser.getIdToken().then(function(idToken) {
-            // get the user data 
+            // get the user data
             var formdata = new FormData();
             formdata.append("token", idToken);
             formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"));
 
             $.ajax({
-                type: 'POST', 
+                type: 'POST',
                 url: 'getUserData',
                 data: formdata,
                 contentType: false,
@@ -503,6 +522,15 @@ firebase.auth().onAuthStateChanged(user => {
         window.location.replace("/");
     }
 });
+// firebase.auth().onAuthStateChanged(user => {
+//     if (user) {
+//         firebase.auth().currentUser.getIdToken().then(function(idToken) {
+//             console.log(idToken);
+//         }).catch(function(error) {
+//             signout();
+//         });
+//     }
+// });
 
 // TODO need to get these values from the database and store it
 //setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
