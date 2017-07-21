@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie 
 import firebase_admin
 from firebase_admin import auth
 from firebase_admin import credentials
@@ -9,7 +10,7 @@ import time
 cred = credentials.Certificate("trakr/keys/trakr-39dff-firebase-adminsdk-h091m-d33131032e.json")
 default_app = firebase_admin.initialize_app(cred)
 
-
+@ensure_csrf_cookie
 def index(request):
     return render(request, "trakr/mainpage.html")
 
