@@ -25,7 +25,7 @@
                 <!-- asdf -->
             </div>
             <div class="col-md-4 text-center" id="menu">
-                <a href="#" class="menuitem">Logout</a>
+                <a href="javascript:signout()" class="menuitem">Logout</a>
                 <a href="/status" class="menuitem">Status</a>
                 <a href="#" class="menuitem">Account</a>
                 <a href="#" class="menuitem">Home</a>
@@ -430,7 +430,7 @@ a:hover {
 .check_title,
 .services_title,
 .extra {
-    font-family: "Graphik-Semibold";
+    font-family: "trakr_text_semibold";
     font-size: 12px;
     letter-spacing: -0.3;
     /*padding-top: 8px;*/
@@ -486,7 +486,6 @@ function editItem(itemId) {
 function addItem() {
     // display the page
 }
-
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         firebase.auth().currentUser.getIdToken().then(function(idToken) {
@@ -494,10 +493,10 @@ firebase.auth().onAuthStateChanged(user => {
             var formdata = new FormData();
             formdata.append("token", idToken);
             formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"));
-
+            console.log(getCookie("csrftoken"));
             $.ajax({
                 type: 'POST',
-                url: 'getUserData',
+                url: 'loadUserData',
                 data: formdata,
                 contentType: false,
                 processData: false,

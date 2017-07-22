@@ -13,7 +13,7 @@ class User(Model):
     membership_type = NumberAttribute(default=0)
     membership_start = UTCDateTimeAttribute(null=True)
     payment = JSONAttribute(null=True)      # {credit_card, security, expiry, name, address, phone}
-    websites = JSONAttribute(null=True)     # {url1:{name}, url2: ...}
+    websites = JSONAttribute(null=True)     # {url1:{name, frequency?}, url2: ...}
 
 class Website(Model):
     class Meta:
@@ -36,7 +36,7 @@ class Update(Model):
 
 class Log(Model):
     class Meta:
-        table_name = "updates"
+        table_name = "logs"
         region = "us-east-2"
 
     log_id = UnicodeAttribute(hash_key=True)
@@ -44,6 +44,7 @@ class Log(Model):
     log_time = UTCDateTimeAttribute(null=True)
 
     # log id =hashlib.md5(("some event" + str(int(time.time()))).encode("utf-8")).hexdigest(),
+
 
 
 # if not User.exists():
