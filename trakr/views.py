@@ -51,7 +51,6 @@ def loadUserData(request):
         try:
             user = aws_models.User.get(uid)
             print("User already exists")
-            print(user)
         except:
             print("Adding " + uid + " to the database")
             user = aws_models.User(uid=uid, email=email, membership_start=datetime.now())
@@ -61,4 +60,4 @@ def loadUserData(request):
 
         # return all information back and add to the render as a json object
         # backend branch test
-        return HttpResponse(json.dumps({"status":1, "uid":decoded_token["uid"]}))
+        return HttpResponse(json.dumps({"status":1, "uid":uid, "email":email, "websites":user.websites}))
