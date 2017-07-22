@@ -209,7 +209,7 @@
         </div>
         <input id="addButton" class="undraggable center-block" type="image" src="{% static 'trakr/images/add_button.svg' %}" name="5555" onclick="addItem()" />
 
-        <div class="col-md-4 col-md-offset-4" id="add_item_menu" style="overflow: hidden;">
+        <div class="col-md-4 col-md-offset-4" id="add_item_menu" style="overflow: hidden; font-family:'trakr_text_semibold';">
           <br>
           <br>
 
@@ -244,20 +244,20 @@
             <div id="fourcircle" class="row">
                 <div class="col-xs-2"></div>
                 <div class="col-xs-2 text-center">
-                    <img class="center-block" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"></img>
+                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
                     <div id="frequencyoption">1min</div>
                 </div>
 
                 <div class="col-xs-2 text-center">
-                    <img class="center-block" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"></img>
+                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
                   <div id="frequencyoption">1min</div>
                 </div>
                 <div class="col-xs-2 text-center">
-                    <img class="center-block" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"></img>
+                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
                     <div id="frequencyoption">1min</div>
                 </div>
                 <div class="col-xs-2 text-center">
-                    <img class="center-block" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"></img>
+                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
 
                     <div id="frequencyoption">1min</div>
                 </div>
@@ -275,19 +275,19 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
               <div id="notification_option">
-                  <img class="undraggable notification_option_button " src="{% static 'trakr/images/checkbox_inactive.svg' %}"></img>
+                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
                   yzhao9@ualberta.ca
               </div>
               <div id="notification_option">
-                  <img class="undraggable notification_option_button " src="{% static 'trakr/images/checkbox_inactive.svg' %}" ></img>
+                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
                   yzhao9@ualberta.ca
               </div>
               <div id="notification_option">
-                  <img class="undraggable notification_option_button " src="{% static 'trakr/images/checkbox_inactive.svg' %}"></img>
+                  <img class="undraggable notification_option_button fourcircle"   src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
                   yzhao9@ualberta.ca
               </div>
               <div id="notification_option">
-                  <img class="undraggable notification_option_button " src="{% static 'trakr/images/checkbox_inactive.svg' %}"></img>
+                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
                   yzhao9@ualberta.ca
               </div>
             </div>
@@ -305,10 +305,15 @@
           </div>
 
           <button class="center-block" id="submitbutton">Submit</button>
+          <br>
       </div>
     </div>
 </body>
 <style>
+#fourcircle:hover{
+  src="{% static 'trakr/images/checkbox_active.svg' %}";
+
+}
 #submitbutton{
   margin-top: 100px;
   background: #6F06FB;
@@ -479,6 +484,20 @@ hr {
 
 </style>
 <script>
+function offclick(){
+  console.log("r");
+  document.getElementById("fourcircle").setAttribute('src',"{% static 'trakr/images/checkbox_inactive.svg' %}");
+}
+function hover(element,classname){
+  // offclick();
+  var circles=document.getElementsByClassName(classname);
+  for(var i=0;i< circles.length;i+=1){
+    circles[i].src="{% static 'trakr/images/checkbox_inactive.svg' %}";
+  }
+
+  console.log("s");
+  element.setAttribute('src',"{% static 'trakr/images/checkbox_active.svg' %}");
+}
 function editItem(itemId) {
     alert(itemId);
 }
