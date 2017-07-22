@@ -14,7 +14,7 @@
 </head>
 
 <body style="display: none">
-    <div id="backplate" class="container-fluid">
+    <div id="backplate" class="container-fluid" onclick="showsup(true)">
         <div class="row" id="mainRow">
             <div id="infoMessage"></div>
             <div class="col-md-1"></div>
@@ -207,9 +207,9 @@
             </div>
             <!-- <div class="col-md-1" style="background-color: grey">sdf</div> -->
         </div>
-        <input id="addButton" class="undraggable center-block" type="image" src="{% static 'trakr/images/add_button.svg' %}" name="5555" onclick="addItem()" />
+        <input id="addButton" class="undraggable center-block" type="image" style="padding-bottom:50px;"src="{% static 'trakr/images/add_button.svg' %}" name="5555" onclick="showsup(false)" />
 
-        <div class="col-md-4 col-md-offset-4" id="add_item_menu" style="overflow: hidden; font-family:'trakr_text_semibold';">
+        <div class="col-md-4 col-md-offset-4" id="add_item_menu" style="overflow: hidden; display: none; font-family:'trakr_text_semibold';">
           <br>
           <br>
 
@@ -310,10 +310,7 @@
     </div>
 </body>
 <style>
-#fourcircle:hover{
-  src="{% static 'trakr/images/checkbox_active.svg' %}";
 
-}
 #submitbutton{
   margin-top: 100px;
   background: #6F06FB;
@@ -484,9 +481,20 @@ hr {
 
 </style>
 <script>
-function offclick(){
-  console.log("r");
-  document.getElementById("fourcircle").setAttribute('src',"{% static 'trakr/images/checkbox_inactive.svg' %}");
+function showsup(blank){
+  document.addEventListener("click", function (e) {
+  var level = 0;
+  for (var element = e.target; element; element = element.parentNode) {
+    if (element.id === 'addButton') {
+        console.log("5");
+        document.getElementById("add_item_menu").style.display="block";
+      return;
+    }
+    level++;
+  }
+  document.getElementById("add_item_menu").style.display="none";
+});
+
 }
 function hover(element,classname){
   // offclick();
