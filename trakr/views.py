@@ -46,21 +46,17 @@ def loadUserData(request):
         # add the user into the database if not there already
         uid = decoded_token["uid"]
         email = decoded_token["email"]
-        new_user = False
-        
+
         # see if the user exists
         try:
             user = aws_models.User.get(uid)
+            print("User already exists")
+            print(user)
         except:
-            new_user = True
-        
-        # if the user doesn't exist, add the user to the database
-        if new_user:
             print("Adding " + uid + " to the database")
             user = aws_models.User(uid=uid, email=email, membership_start=datetime.now())
             user.save()
-        else:
-            print("User already exists")
+           
             # get the user information
 
         # return all information back and add to the render as a json object
