@@ -496,7 +496,7 @@ firebase.auth().onAuthStateChanged(user => {
             console.log(getCookie("csrftoken"));
             $.ajax({
                 type: 'POST',
-                url: 'getUserData',
+                url: 'loadUserData',
                 data: formdata,
                 contentType: false,
                 processData: false,

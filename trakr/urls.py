@@ -11,7 +11,7 @@ urlpatterns = [
 
 
     
-    url(r'^getUserData$', views.getUserData, name="getUserData")
+    url(r'^loadUserData$', views.loadUserData, name="loadUserData")
 
     
     # url(r'^test$', user_manager.login_user, name="login_user")
