@@ -92,3 +92,7 @@ function setInfoMessage(message) {
     document.getElementById("infoMessage").innerHTML = message;
 }
 
+function logout(){
+    alert("test");
+}
+
