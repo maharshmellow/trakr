@@ -83,6 +83,13 @@ firebase.auth().onAuthStateChanged(user => {
         document.getElementsByTagName("body")[0].style.display = "block";
     }
 });
+
+// when the enter key is pressed from the password input - login
+$("#passwordInput").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        login();
+    }
+});
 </script>
 
 </html>

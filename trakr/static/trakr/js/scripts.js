@@ -8,17 +8,10 @@ var config = {
 };
 firebase.initializeApp(config);
 
-// // main logic 
-// firebase.auth().onAuthStateChanged(user => {
-//     if (user) {
-//         window.location.replace("/home");
-//     }
-// });
-
 function login() {
     document.getElementById("errorBar").style.visibility = "hidden";
     document.getElementById("errorBar").innerHTML = "Invalid"
-    
+
     username = document.getElementById("usernameInput").value;
     password = document.getElementById("passwordInput").value;
 
