@@ -17,6 +17,8 @@ firebase.initializeApp(config);
 
 function login() {
     document.getElementById("errorBar").style.visibility = "hidden";
+    document.getElementById("errorBar").innerHTML = "Invalid"
+    
     username = document.getElementById("usernameInput").value;
     password = document.getElementById("passwordInput").value;
 
@@ -35,6 +37,8 @@ function login() {
 
 function signup() {
     document.getElementById("errorBar").style.visibility = "hidden";
+    document.getElementById("errorBar").innerHTML = "Invalid"
+
     username = document.getElementById("usernameInput").value;
     password = document.getElementById("passwordInput").value;
 
@@ -44,6 +48,10 @@ function signup() {
         // var errorMessage = error.message;
 
         // alert(errorCode)
+        console.log(error.code);
+        if (error.code == "auth/email-already-in-use"){
+            document.getElementById("errorBar").innerHTML = "Email already in use"
+        }
         document.getElementById("usernameInput").value = "";
         document.getElementById("passwordInput").value = "";
         document.getElementById("usernameInput").focus();
