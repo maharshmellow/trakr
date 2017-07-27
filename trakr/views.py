@@ -37,6 +37,7 @@ def getDecodedToken(token):
 
 
 def loadUserData(request):
+    # gets the initial data from the logged in user
     if request.method == "POST":
         # verify the token
         decoded_token = getDecodedToken(request.POST.get("token"))
@@ -55,9 +56,43 @@ def loadUserData(request):
             print("Adding " + uid + " to the database")
             user = aws_models.User(uid=uid, email=email, membership_start=datetime.now())
             user.save()
-           
-            # get the user information
 
         # return all information back and add to the render as a json object
-        # backend branch test
         return HttpResponse(json.dumps({"status":1, "uid":uid, "email":email, "websites":user.websites}))
+
+def addWebsite(request):
+    # adds the given website for the user and then returns a status code
+    if request.method == "POST":
+        decoded_token = getDecodedToken(request.POST.get("token"))
+        if not decoded_token:
+            return HttpResponse(json.dumps({"status":0}))
+
+        uid = decoded_token["uid"]
+        # update the user data wth the new website
+        user = aws_models.User.get(uid)
+        old_websites = user.websites
+        print("old", old_websites)
+
+
+        website = {"https://www.maharshsss.net":{"name": "Maharsh Page", "frequency": 5, "contact":["patel@maharsh.net"]}}
+
+        # add the new website into the old_websites
+        new_websites = old_websites.copy()
+        new_websites.update(website)
+        print("new", new_websites)
+        # if old_websites == new_websites then nothing has changed since the merge handled the duplicates 
+        if old_websites != new_websites:
+            user.update({"websites":{"value":new_websites, "action":"PUT"}})
+            user.refresh()
+            print("final", user.websites)
+
+        
+        return HttpResponse(json.dumps({"status":1}))
+        # old_websites += {"https://www.maharsh.net"}
+
+        
+
+        # add the website to the websites table
+
+
+

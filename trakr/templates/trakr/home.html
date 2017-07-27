@@ -207,138 +207,124 @@
             </div>
             <!-- <div class="col-md-1" style="background-color: grey">sdf</div> -->
         </div>
-        <input id="addButton" class="undraggable center-block" type="image" style="padding-bottom:50px;"src="{% static 'trakr/images/add_button.svg' %}" name="5555" onclick="showsup(false)" />
-
+        <input id="addButton" class="undraggable center-block" type="image" style="padding-bottom:50px;" src="{% static 'trakr/images/add_button.svg' %}" name="5555" onclick="showsup(false)" />
         <div class="col-md-4 col-md-offset-4" id="add_item_menu" style="overflow: hidden; display: none; font-family:'trakr_text_semibold';">
-          <br>
-          <br>
-
-          <div class="row">
-            <div class="col-md-1 col-xs-2"></div>
-            <div class="col-md-10 col-xs-8 text-center">
-              <div id="add_item_label" style="float: left; padding-top:10px; ">Website Name</div>
-              <input class="add_item_input" id="website_name_input"/>
-            </div>
-            <div class="col-md-1 col-xs-2"></div>
-          </div>
-          <div class="row">
-            <div class="col-md-1 col-xs-2"></div>
-            <div class="col-md-10 col-xs-8 text-center">
-              <div id="add_item_label" style="float: left;padding-top:10px;">Website Url</div>
-              <input class="add_item_input" id="website_name_input"/>
-            </div>
-            <div class="col-md-1"></div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 text-center">
-              <div id="add_item_label" style="float: left; padding-top:10px; " >Frequency</div>
-
-            </div>
-            <div class="col-md-1"></div>
-          </div>
-          <br>
-
+            <br>
+            <br>
             <div class="row">
-            <div id="fourcircle" class="row">
-                <div class="col-xs-2"></div>
-                <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
-                    <div id="frequencyoption">1min</div>
+                <div class="col-md-1 col-xs-2"></div>
+                <div class="col-md-10 col-xs-8 text-center">
+                    <div id="add_item_label" style="float: left; padding-top:10px; ">Website Name</div>
+                    <input class="add_item_input" id="website_name_input" />
                 </div>
-
-                <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
-                  <div id="frequencyoption">1min</div>
-                </div>
-                <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
-                    <div id="frequencyoption">1min</div>
-                </div>
-                <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
-
-                    <div id="frequencyoption">1min</div>
-                </div>
-                <div class="col-xs-2"></div>
-              </div>
+                <div class="col-md-1 col-xs-2"></div>
             </div>
-
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div id="add_item_label" class="col-md-10">Notification</div>
-            <div class="col-md-1"></div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-              <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
-                  yzhao9@ualberta.ca
-              </div>
-              <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
-                  yzhao9@ualberta.ca
-              </div>
-              <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"   src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
-                  yzhao9@ualberta.ca
-              </div>
-              <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
-                  yzhao9@ualberta.ca
-              </div>
+            <div class="row">
+                <div class="col-md-1 col-xs-2"></div>
+                <div class="col-md-10 col-xs-8 text-center">
+                    <div id="add_item_label" style="float: left;padding-top:10px;">Website Url</div>
+                    <input class="add_item_input" id="website_name_input" />
+                </div>
+                <div class="col-md-1"></div>
             </div>
-            <div class="col-md-1"></div>
-
-          </div>
-
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 text-center">
-              <div id="add_item_label" style="float: left; padding-top:10px;">Webhook(optional)</div>
-              <input class="add_item_input" id="website_name_input"/>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 text-center">
+                    <div id="add_item_label" style="float: left; padding-top:10px; ">Frequency</div>
+                </div>
+                <div class="col-md-1"></div>
             </div>
-            <div class="col-md-1"></div>
-          </div>
-
-          <button class="center-block" id="submitbutton">Submit</button>
-          <br>
-      </div>
+            <br>
+            <div class="row">
+                <div id="fourcircle" class="row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-2 text-center">
+                        <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
+                        <div id="frequencyoption">1min</div>
+                    </div>
+                    <div class="col-xs-2 text-center">
+                        <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
+                        <div id="frequencyoption">1min</div>
+                    </div>
+                    <div class="col-xs-2 text-center">
+                        <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
+                        <div id="frequencyoption">1min</div>
+                    </div>
+                    <div class="col-xs-2 text-center">
+                        <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
+                        <div id="frequencyoption">1min</div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div id="add_item_label" class="col-md-10">Notification</div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div id="notification_option">
+                        <img class="undraggable notification_option_button fourcircle" src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
+                        yzhao9@ualberta.ca
+                    </div>
+                    <div id="notification_option">
+                        <img class="undraggable notification_option_button fourcircle" src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
+                        yzhao9@ualberta.ca
+                    </div>
+                    <div id="notification_option">
+                        <img class="undraggable notification_option_button fourcircle" src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
+                        yzhao9@ualberta.ca
+                    </div>
+                    <div id="notification_option">
+                        <img class="undraggable notification_option_button fourcircle" src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
+                        yzhao9@ualberta.ca
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 text-center">
+                    <div id="add_item_label" style="float: left; padding-top:10px;">Webhook(optional)</div>
+                    <input class="add_item_input" id="website_name_input" />
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <button class="center-block" id="submitbutton">Submit</button>
+            <br>
+        </div>
     </div>
 </body>
 <style>
-
-#submitbutton{
-  margin-top: 100px;
-  background: #6F06FB;
-  border-radius: 90px;
-  outline:none;
-  border: none;
-  width: 180px;
-  height: 40px;
-  color: white;
-
-
-
-
+#submitbutton {
+    margin-top: 100px;
+    background: #6F06FB;
+    border-radius: 90px;
+    outline: none;
+    border: none;
+    width: 180px;
+    height: 40px;
+    color: white;
 }
-#notification_option{
-  padding-bottom: 4px;
+
+#notification_option {
+    padding-bottom: 4px;
 }
-#selectfrequencybutton{
-  padding-bottom: 10px;
+
+#selectfrequencybutton {
+    padding-bottom: 10px;
 }
-#frequencyoption{
-  padding-bottom: 8px;
+
+#frequencyoption {
+    padding-bottom: 8px;
 }
+
 #add_item_menu {
     background-color: white;
     box-shadow: 0 0 8px 0 #D3D3D3;
 }
-
 
 .add_item_input {
     line-height: 3em;
@@ -473,39 +459,39 @@ hr {
     -webkit-user-drag: none;
 }
 
-.notification_option_button{
+.notification_option_button {
     padding-left: 20px;
     width: 30px;
-
 }
-
 </style>
 <script>
-function showsup(blank){
-  document.addEventListener("click", function (e) {
-  var level = 0;
-  for (var element = e.target; element; element = element.parentNode) {
-    if (element.id === 'addButton') {
-        console.log("5");
-        document.getElementById("add_item_menu").style.display="block";
-      return;
+function showsup(blank) {
+    document.addEventListener("click", function(e) {
+        var level = 0;
+        for (var element = e.target; element; element = element.parentNode) {
+            if (element.id === 'addButton') {
+                console.log("5");
+                document.getElementById("add_item_menu").style.display = "block";
+                return;
+            }
+            level++;
+        }
+        document.getElementById("add_item_menu").style.display = "none";
+    });
+
+}
+
+function hover(element, classname) {
+    // offclick();
+    var circles = document.getElementsByClassName(classname);
+    for (var i = 0; i < circles.length; i += 1) {
+        circles[i].src = "{% static 'trakr/images/checkbox_inactive.svg' %}";
     }
-    level++;
-  }
-  document.getElementById("add_item_menu").style.display="none";
-});
 
+    console.log("s");
+    element.setAttribute('src', "{% static 'trakr/images/checkbox_active.svg' %}");
 }
-function hover(element,classname){
-  // offclick();
-  var circles=document.getElementsByClassName(classname);
-  for(var i=0;i< circles.length;i+=1){
-    circles[i].src="{% static 'trakr/images/checkbox_inactive.svg' %}";
-  }
 
-  console.log("s");
-  element.setAttribute('src',"{% static 'trakr/images/checkbox_active.svg' %}");
-}
 function editItem(itemId) {
     alert(itemId);
 }
@@ -513,6 +499,7 @@ function editItem(itemId) {
 function addItem() {
     // display the page
 }
+// get the initial user data
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         firebase.auth().currentUser.getIdToken().then(function(idToken) {
@@ -530,12 +517,15 @@ firebase.auth().onAuthStateChanged(user => {
                 success: function(data) {
                     var response = JSON.parse(data);
 
-                    if (response.status == 0){
+                    if (response.status == 0) {
                         console.log("0")
                         signout();
                     }
+                    console.log(1);
                     console.log(response);
                     document.getElementsByTagName("body")[0].style.display = "block";
+
+                    addWebsite();
                 },
             });
 
@@ -543,44 +533,47 @@ firebase.auth().onAuthStateChanged(user => {
         }).catch(function(error) {
             signout();
         });
-    }
-    else{
+    } else {
         window.location.replace("/");
     }
 });
-// firebase.auth().onAuthStateChanged(user => {
-//     if (user) {
-//         firebase.auth().currentUser.getIdToken().then(function(idToken) {
-//             console.log(idToken);
-//         }).catch(function(error) {
-//             signout();
-//         });
-//     }
-// });
-
-// TODO need to get these values from the database and store it
-//setInfoMessage("Notifications may be delayed - Experiencing Problems with SendGrid");
 
 
-// check if the user is already logged in
+function addWebsite() {
+    firebase.auth().currentUser.getIdToken().then(function(idToken) {
+        console.log("addWebsite");
 
-//TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION
-// firebase.auth().onAuthStateChanged(user => {
-//     if (user) {
-//         firebase.auth().currentUser.getIdToken().then(function(idToken) {
+        var formdata = new FormData();
+        formdata.append("token", idToken);
+        formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"))
+        formdata.append("website_name", "maharsh.net homepage");
+        formdata.append("website_url", "https://www.maharsh.net");
+        formdata.append("frequency", 1);
+        formdata.append("notificationID", 122);
+        formdata.append("hook_url", "someurl.com/hook");
 
-//             // TODO DO THE REQUEST HERE
-//             // $.get("/home", ...
+        $.ajax({
+            type: 'POST',
+            url: 'addWebsite',
+            data: formdata,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                var response = JSON.parse(data);
 
-//             var info = "Email: " + user.email + "<br>ID:" + user.uid + "<br>Token:" + idToken;
-//             document.getElementById("info").innerHTML = info;
-//         }).catch(function(error) {
-//             signout();
-//         });
-//     } else {
-//         window.location.replace("/");
-//     }
-// });
+                if (response.status == 0) {
+                    console.log("0")
+                    signout();
+                }
+                console.log(2);
+                console.log(response);
+            },
+        });
+
+
+    }).catch(function(error) {
+        signout();
+    });
+}
 </script>
-
 </html>
