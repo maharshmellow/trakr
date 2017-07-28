@@ -36,66 +36,19 @@
         <div class="row">
             <div class="col-md-10 col-md-push-1" id="websites">
                 <!-- <div class="spacer1"></div> -->
-                <div class="website">
-                    <div class="col-md-4">
-                        <div class="website_title">Jason Lang Scholarship</div>
-                        <div class="website_value">http://ualberta.ca/jasonlang</div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="modified_title">Last Modified</div>
-                        <div class="modified_value">June 12, 2017</div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="check_title">Last Checked</div>
-                        <div class="check_value">July 15, 2017 9:30PM</div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="services_title">Services</div>
-                        <div class="services_value">Email, SMS, Slack, API</div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="extra">
-                            <img class="undraggable" src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
-                        </div>
-                    </div>
-                    <div class="col-md-1 center-block">
-                        <div class="extra">
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
-                        </div>
-                    </div>
-                    <!-- <div class="spacer1"></div> -->
-                </div>
+
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
                     <hr>
                 </div>
                 <div class="col-md-1"></div>
                 <div class="website">
-                    <div class="col-md-4">
-                        <div class="website_title">Jason Lang Scholarship</div>
-                        <div class="website_value">http://ualberta.ca/jasonlang</div>
-                    </div>
-                    <div class="col-md-2 ">
-                        <div class="modified_title">Last Modified</div>
-                        <div class="modified_value">June 12, 2017</div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="check_title">Last Checked</div>
-                        <div class="check_value">July 15, 2017 9:30PM</div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="services_title">Services</div>
-                        <div class="services_value">Email, SMS, Slack, API</div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="extra">
-                            <img class="undraggable" src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
-                        </div>
-                    </div>
-                    <div class="col-md-1 center-block">
-                        <div class="extra">
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2222" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
-                        </div>
+                    <div class="col-md-8">
+            
+                        <div class="website_title">Limit</div>
+                        <br>
+                        <div class="website_value">unlimited Email Notifications</div>
+                        <div class="website_value">5 free SMS Notifications</div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
                 </div>
@@ -142,7 +95,7 @@
                 <div class="website">
                     <!-- <div class="spacer1"></div> -->
                     <div class="col-md-4">
-                        <div class="website_title">Jason Lang Scholarship</div>
+                        <div class="website_title">limit</div>
                         <div class="website_value">http://ualberta.ca/jasonlang</div>
                     </div>
                     <div class="col-md-2 ">
@@ -207,107 +160,12 @@
             </div>
             <!-- <div class="col-md-1" style="background-color: grey">sdf</div> -->
         </div>
-        <a href="#add_item_menu"><input id="addButton" class="undraggable center-block" type="image" style="padding-bottom:50px;"src="{% static 'trakr/images/add_button.svg' %}" name="5555" onclick="addWebsite()" /></a>
 
-        <div class="col-md-4 col-md-offset-4" id="add_item_menu" style="overflow: hidden; display: none; font-family:'trakr_text_semibold';">
-          <br>
-          <br>
 
-          <div class="row">
-            <div class="col-md-1 col-xs-2"></div>
-            <div class="col-md-10 col-xs-8 text-center">
-              <div id="add_item_label" style="float: left; padding-top:10px; ">Website Name</div>
-              <input class="add_item_input" id="website_name_input"/>
-            </div>
-            <div class="col-md-1 col-xs-2"></div>
-          </div>
-          <div class="row">
-            <div class="col-md-1 col-xs-2"></div>
-            <div class="col-md-10 col-xs-8 text-center">
-              <div id="add_item_label" style="float: left;padding-top:10px;">Website Url</div>
-              <input class="add_item_input" id="website_name_input"/>
-            </div>
-            <div class="col-md-1"></div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 text-center">
-              <div id="add_item_label" style="float: left; padding-top:10px; " >Frequency</div>
 
-            </div>
-            <div class="col-md-1"></div>
-          </div>
-          <br>
 
-            <div class="row">
-            <div id="fourcircle" class="row">
-                <div class="col-xs-2"></div>
-                <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
-                    <div id="frequencyoption">1min</div>
-                </div>
 
-                <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
-                  <div id="frequencyoption">1min</div>
-                </div>
-                <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
-                    <div id="frequencyoption">1min</div>
-                </div>
-                <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
-
-                    <div id="frequencyoption">1min</div>
-                </div>
-                <div class="col-xs-2"></div>
-              </div>
-            </div>
-
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div id="add_item_label" class="col-md-10">Notification</div>
-            <div class="col-md-1"></div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-              <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
-                  yzhao9@ualberta.ca
-              </div>
-              <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
-                  yzhao9@ualberta.ca
-              </div>
-              <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"   src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
-                  yzhao9@ualberta.ca
-              </div>
-              <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
-                  yzhao9@ualberta.ca
-              </div>
-            </div>
-            <div class="col-md-1"></div>
-
-          </div>
-
-          <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 text-center">
-              <div id="add_item_label" style="float: left; padding-top:10px;">Webhook(optional)</div>
-              <input class="add_item_input" id="website_name_input"/>
-            </div>
-            <div class="col-md-1"></div>
-          </div>
-
-          <button class="center-block" id="submitbutton">Submit</button>
-          <br>
-      </div>
-    </div>
 </body>
 <style>
 
@@ -452,7 +310,6 @@ a:hover {
     font-family: "trakr_text_regular";
     letter-spacing: -0.3;
     font-size: 12px;
-    padding-bottom: 35px;
     color: #A9A5BC;
 }
 

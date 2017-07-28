@@ -225,7 +225,7 @@
             <div class="col-md-1 col-xs-2"></div>
             <div class="col-md-10 col-xs-8 text-center">
               <div id="add_item_label" style="float: left;padding-top:10px;">Website Url</div>
-              <input class="add_item_input" id="website_name_input"/>
+              <input class="add_item_input" id="website_url_input"/>
             </div>
             <div class="col-md-1"></div>
           </div>
@@ -244,22 +244,22 @@
             <div id="fourcircle" class="row">
                 <div class="col-xs-2 col-xs-2"></div>
                 <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
+                    <img class="center-block frequencybut" id="selectfrequencybutton" name="1min" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;" onclick="hover(this,'frequencybut');"></img>
                     <div id="frequencyoption">1min</div>
                 </div>
 
                 <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
-                  <div id="frequencyoption">1min</div>
+                    <img class="center-block frequencybut" id="selectfrequencybutton" name="5min" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
+                  <div id="frequencyoption">5min</div>
                 </div>
                 <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
-                    <div id="frequencyoption">1min</div>
+                    <img class="center-block frequencybut" id="selectfrequencybutton" name="30min" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
+                    <div id="frequencyoption">30min</div>
                 </div>
                 <div class="col-xs-2 text-center">
-                    <img class="center-block frequencybut" id="selectfrequencybutton" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
+                    <img class="center-block frequencybut" id="selectfrequencybutton" name="60min" src="{% static 'trakr/images/checkbox_inactive.svg' %}" style="width: 25px;"  onclick="hover(this,'frequencybut');"></img>
 
-                    <div id="frequencyoption">1min</div>
+                    <div id="frequencyoption">60min</div>
                 </div>
                 <div class="col-xs-2 col-xs-2"></div>
               </div>
@@ -275,19 +275,19 @@
             <div class="col-md-1 col-xs-2"></div>
             <div class="col-md-10 col-xs-8">
               <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
+                  <img class="undraggable notification_option_button fourcircle" name="email1" src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
                   yzhao9@ualberta.ca
               </div>
               <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
+                  <img class="undraggable notification_option_button fourcircle"  name="email2"src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
                   yzhao9@ualberta.ca
               </div>
               <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"   src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
+                  <img class="undraggable notification_option_button fourcircle"   name="email3" src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
                   yzhao9@ualberta.ca
               </div>
               <div id="notification_option">
-                  <img class="undraggable notification_option_button fourcircle"  src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
+                  <img class="undraggable notification_option_button fourcircle"  name="email4" src="{% static 'trakr/images/checkbox_inactive.svg' %}" onclick="hover(this,'fourcircle');"></img>
                   yzhao9@ualberta.ca
               </div>
             </div>
@@ -304,7 +304,7 @@
             <div class="col-md-1 col-xs-2"></div>
           </div>
 
-          <button class="center-block" id="submitbutton">Submit</button>
+          <button class="center-block" id="submitbutton" onclick="getInfo();">Submit</button>
           <br>
       </div>
     </div>
@@ -537,6 +537,8 @@ $("#addButton").click(function() {
 // });
 //
 // }
+
+var freq, email;
 function hover(element,classname){
   // offclick();
   var circles=document.getElementsByClassName(classname);
@@ -544,8 +546,21 @@ function hover(element,classname){
     circles[i].src="{% static 'trakr/images/checkbox_inactive.svg' %}";
   }
 
-  console.log("s");
+  var category = element.getAttribute('name');
+  if(category.includes("min")){
+    freq=category
+  }
+  if(category.includes("email")){
+    email=category
+  }
+  console.log(email);
+  console.log(freq);
+
+
+
+
   element.setAttribute('src',"{% static 'trakr/images/checkbox_active.svg' %}");
+
 }
 function editItem(itemId) {
     alert(itemId);
@@ -589,6 +604,43 @@ firebase.auth().onAuthStateChanged(user => {
         window.location.replace("/");
     }
 });
+var info=[];
+function isUrlValid(url){
+  var urlregex = /^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/;
+    return urlregex.test(url);
+}
+
+
+
+function getInfo(){
+  var webname=document.getElementById("website_name_input").value;
+  var url=document.getElementById("website_url_input").value;
+  var webhook=document.getElementById("add_item_label").value;
+  console.log("url "+ url);
+  if(webname.length!=0 && url.length!=0 && isUrlValid(url) && email.length!=0 && freq.length!=0 ){
+      console.log("test");
+      info.push(webname);
+      info.push(url);
+      info.push(webhook);
+      info.push(email);
+      info.push(freq);
+
+  }
+  else{
+    console.log("error");
+  }
+
+
+
+
+
+
+  console.log(info);
+
+
+
+}
+
 // firebase.auth().onAuthStateChanged(user => {
 //     if (user) {
 //         firebase.auth().currentUser.getIdToken().then(function(idToken) {
