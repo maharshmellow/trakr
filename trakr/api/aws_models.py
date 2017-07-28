@@ -13,7 +13,7 @@ class User(Model):
     membership_type = NumberAttribute(default=0)
     membership_start = UTCDateTimeAttribute(null=True)
     payment = JSONAttribute(null=True)      # {credit_card, security, expiry, name, address, phone}
-    websites = JSONAttribute(null=True)     # {url1:{name, frequency?}, url2: ...}
+    websites = JSONAttribute(null=True)     # {url1:{name, frequency, status, contact}, url2: ...}
 
 class Website(Model):
     class Meta:

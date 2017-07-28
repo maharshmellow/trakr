@@ -549,24 +549,34 @@ function addWebsite() {
         formdata.append("website_name", "maharsh.net homepage");
         formdata.append("website_url", "https://www.maharsh.net");
         formdata.append("frequency", 1);
-        formdata.append("notificationID", 122);
-        formdata.append("hook_url", "someurl.com/hook");
+        formdata.append("contacts", ["patel@maharsh.net", "abc@gmail.com"]);
+        formdata.append("hook_url", "https://www.someurl.com/hook");
 
         $.ajax({
             type: 'POST',
-            url: 'addWebsite',
+            url: 'updateWebsites',
             data: formdata,
             contentType: false,
             processData: false,
             success: function(data) {
                 var response = JSON.parse(data);
-
-                if (response.status == 0) {
-                    console.log("0")
+                console.log(response);
+                
+                if (response.status == 403) {
+                    // unauthorized
                     signout();
                 }
-                console.log(2);
-                console.log(response);
+                else if (response.status == 400){
+                    // invalid
+                    console.log("invalid data");
+                }
+                else if (response.status == 201){
+                    // success 
+                    // TODO close all open edit / add website boxes
+                    // clear all fields
+                    console.log("success");
+                }
+                
             },
         });
 
