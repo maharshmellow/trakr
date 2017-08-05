@@ -60,7 +60,8 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
+
+                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem('website_name', 'website_url', '5min', 'email1', 'webhook')"/>
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -94,42 +95,7 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2222" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
-                        </div>
-                    </div>
-                    <!-- <div class="spacer1"></div> -->
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <hr>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="website">
-                    <!-- <div class="spacer1"></div> -->
-                    <div class="col-md-4">
-                        <div class="website_title">Jason Lang Scholarship</div>
-                        <div class="website_value">http://ualberta.ca/jasonlang</div>
-                    </div>
-                    <div class="col-md-2 ">
-                        <div class="modified_title">Last Modified</div>
-                        <div class="modified_value">June 12, 2017</div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="check_title">Last Checked</div>
-                        <div class="check_value">July 15, 2017 9:30PM</div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="services_title">Services</div>
-                        <div class="services_value">Email, SMS, Slack, API</div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="extra">
-                            <img class="undraggable" src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
-                        </div>
-                    </div>
-                    <div class="col-md-1 center-block">
-                        <div class="extra">
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="3333" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
+                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="2222" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem('website_name', 'website_url', '5min', 'email1', 'webhook')" />
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -164,7 +130,42 @@
                     </div>
                     <div class="col-md-1 center-block">
                         <div class="extra">
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="4444" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
+                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="3333" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem('website_name', 'website_url', '5min', 'email1', 'webhook')" />
+                        </div>
+                    </div>
+                    <!-- <div class="spacer1"></div> -->
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <hr>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="website">
+                    <!-- <div class="spacer1"></div> -->
+                    <div class="col-md-4">
+                        <div class="website_title">Jason Lang Scholarship</div>
+                        <div class="website_value">http://ualberta.ca/jasonlang</div>
+                    </div>
+                    <div class="col-md-2 ">
+                        <div class="modified_title">Last Modified</div>
+                        <div class="modified_value">June 12, 2017</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="check_title">Last Checked</div>
+                        <div class="check_value">July 15, 2017 9:30PM</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="services_title">Services</div>
+                        <div class="services_value">Email, SMS, Slack, API</div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="extra">
+                            <img class="undraggable" src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
+                        </div>
+                    </div>
+                    <div class="col-md-1 center-block">
+                        <div class="extra">
+                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="4444" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem('website_name', 'website_url', '5min', 'email1', 'webhook')" />
                         </div>
                     </div>
                     <!-- <div class="spacer1"></div> -->
@@ -200,7 +201,7 @@
                     <div class="col-md-1 center-block">
                         <div class="extra">
                             <!-- TODO the name attribute here will be replaced with the id of the website for that particular user -->
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="5555" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem(this.name)" />
+                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="5555" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem('website_name', 'website_url', '5min', 'email1', 'webhook')" />
                         </div>
                     </div>
                 </div>
@@ -527,9 +528,7 @@ function selection(element, classname) {
 
 }
 
-function editItem(itemId) {
-    alert(itemId);
-}
+
 
 function addItem() {
     // display the page
@@ -645,6 +644,25 @@ function updateWebsite() {
         signout();
     });
 }
+var row1=["baidu","www.baidu.com","1min","email2","www.baidu.com"];
+var row2=["baidu","www.bidu.com","5min","email1","www.baidu.com"];
+var row3=["baidu","www.baiu.com","30min","email3","www.baidu.com"];
+var row4=["baidu","www.baid.com","60min","email4","www.baidu.com"];
+var row5=["baidu","www.aidu.com","1min","email1","www.baidu.com"];
+
+function editItem(website_name, website_url, frequency, notification, webhook){
+  document.getElementById("website_name_input").value=website_name;
+  document.getElementById("website_url_input").value=website_url;
+  if(webhook.length!=0){
+  document.getElementById("webhook_input").value=webhook;
+}
+
+  document.getElementsByName(frequency)[0].src="{% static 'trakr/images/checkbox_active.svg' %}";
+  document.getElementsByName(notification)[0].src="{% static 'trakr/images/checkbox_active.svg' %}";
+
+}
+
+
 </script>
 
 </html>
