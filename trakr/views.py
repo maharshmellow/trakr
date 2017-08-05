@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import ensure_csrf_cookie 
+from django.views.decorators.csrf import ensure_csrf_cookie
 import firebase_admin
 from firebase_admin import auth
 from firebase_admin import credentials
@@ -8,7 +8,7 @@ import json
 import time
 from .api import aws_models
 from datetime import datetime
-import validators 
+import validators
 
 cred = credentials.Certificate("trakr/keys/trakr-39dff-firebase-adminsdk-h091m-d33131032e.json")
 default_app = firebase_admin.initialize_app(cred)
@@ -79,9 +79,9 @@ def updateWebsites(request):
         # error checking
         if not website_name or not website_url or not frequency or not contacts:
             return HttpResponse(json.dumps({"status":400}))
-        
+
         if not validators.url(website_url):
-            return HttpResponse(json.dumps({"status":400}))    
+            return HttpResponse(json.dumps({"status":400}))
 
         for contact in contacts:
             # check if the contact is a proper email or phone number
@@ -95,29 +95,27 @@ def updateWebsites(request):
         old_websites = user.websites
         print("old", old_websites)
 
-        # TODO put the values from the post request here
         website = {website_url:{"name": website_name, "frequency": frequency, "active": 1, "contacts":contacts}}
 
         # add the new website to the old dictionary
+        # would normally use z = {**x, **y} to merge two dictionaries but in this case we have an array
+        # inside the dictionary so those cannot be merged using that method
         new_websites = old_websites.copy()
         new_websites.update(website)
         # new_websites = {}     # to clear the data
         print("new", new_websites)
-        # if old_websites == new_websites then nothing has changed since the merge handled the duplicates 
+        # if old_websites == new_websites then nothing has changed since the merge handled the duplicates
         if old_websites != new_websites:
             user.update({"websites":{"value":new_websites, "action":"PUT"}})
             user.refresh()
             print("final", user.websites)
 
-            # TODO add to the websites table 
+            # TODO add to the websites table
 
 
         return HttpResponse(json.dumps({"status":201}))
         # old_websites += {"https://www.maharsh.net"}
 
-        
+
 
         # add the website to the websites table
-
-
-
