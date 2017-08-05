@@ -478,22 +478,23 @@ hr {
 </style>
 <script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
 <script>
-var hidden = false;
+var hidden = true;
 
 function addWebsite() {
 
-    if (!hidden) {
+    if (hidden) {
+        clearInfo();
         document.getElementById("add_item_menu").style.display = "block";
-        hidden = true;
+        hidden = false;
         $("#addButton").rotate(45);
     } else {
         document.getElementById("add_item_menu").style.display = "none";
-        hidden = false;
+        hidden = true;
         $("#addButton").rotate(90);
     }
 
 }
-if (!hidden) {
+if (hidden) {
     $("#addButton").click(function() {
         $('html,body').animate({
                 scrollTop: $("#add_item_menu").offset().top
@@ -559,7 +560,7 @@ firebase.auth().onAuthStateChanged(user => {
                     console.log(response);
                     document.getElementsByTagName("body")[0].style.display = "block";
 
-                    updateWebsite();
+                    // updateWebsite();
                 },
             });
 
@@ -592,14 +593,34 @@ function getInfo() {
         info.push(frequency);
         info.push(email);
         info.push(webhook);
+        console.log(info);
+        // clear all the information
+        info = [];
+        clearInfo();
 
     } else {
         console.log("error");
     }
-    console.log(info);
-    info = [];
-}
 
+
+
+}
+function clearInfo(){
+    var circles = document.getElementsByClassName("notification_button");
+    for (var i = 0; i < circles.length; i += 1) {
+        circles[i].src = "{% static 'trakr/images/checkbox_inactive.svg' %}";
+    }
+    var frequencygroup = document.getElementsByClassName("frequency_button");
+    for (var i = 0; i < circles.length; i += 1) {
+        frequencygroup[i].src = "{% static 'trakr/images/checkbox_inactive.svg' %}";
+    }
+    document.getElementById("add_item_menu").style.display="none";
+    document.getElementById("website_name_input").value="";
+    document.getElementById("website_url_input").value="";
+    document.getElementById("webhook_input").value="";
+    $("#addButton").rotate(90);
+    hidden = true;
+}
 function updateWebsite() {
     firebase.auth().currentUser.getIdToken().then(function(idToken) {
         console.log("addWebsite");
@@ -659,6 +680,7 @@ function editItem(website_name, website_url, frequency, notification, webhook){
 
   document.getElementsByName(frequency)[0].src="{% static 'trakr/images/checkbox_active.svg' %}";
   document.getElementsByName(notification)[0].src="{% static 'trakr/images/checkbox_active.svg' %}";
+
 
 }
 
