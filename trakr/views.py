@@ -64,12 +64,12 @@ def loadUserData(request):
 def updateWebsites(request):
     # adds or edits the given website for the user and then returns a status code
     if request.method == "POST":
-        decoded_token = getDecodedToken(request.POST.get("token"))
-        if not decoded_token:
-            return HttpResponse(json.dumps({"status":403}))
-
         # get the website information
         try:
+            decoded_token = getDecodedToken(request.POST.get("token"))
+            if not decoded_token:
+                return HttpResponse(json.dumps({"status":403}))
+
             uid = decoded_token["uid"]
             website_name = request.POST.get("website_name")
             website_url = request.POST.get("website_url")
@@ -107,7 +107,33 @@ def updateWebsites(request):
 
         return HttpResponse(json.dumps({"status":201}))
         # old_websites += {"https://www.maharsh.net"}
+    return HttpResponse(json.dumps({"status":400}))
 
 
+def deleteWebsite(request):
+    if request.method == "POST":
+        try:
+            decoded_token = getDecodedToken(request.POST.get("token"))
+            if not decoded_token:
+                return HttpResponse(json.dumps({"status":403}))
 
-        # add the website to the websites table
+            uid = decoded_token["uid"]
+            website_url = request.POST.get("website_url")
+
+        except:
+            return HttpResponse(json.dumps({"status":400}))
+
+
+        user = aws_models.User.get(uid)
+        websites = user.websites
+        print("old", websites)
+
+        if website_url in websites:
+            websites.pop(website_url)
+            print("new", websites)
+            user.update({"websites":{"value":websites, "action":"PUT"}})
+
+
+        return HttpResponse(json.dumps({"status":201}))
+
+    return HttpResponse(json.dumps({"status":400}))

@@ -101,7 +101,7 @@
 
             <button class="center-block" id="submitbutton" onclick="updateWebsite();">Submit</button>
             <br>
-            <button class="center-block" id="deleteButton" onclick="updateWebsite();">Delete</button>
+            <button class="center-block" id="deleteButton" onclick="deleteWebsite();">Delete</button>
             <br>
         </div>
     </div>
@@ -355,9 +355,10 @@
         document.getElementById("add_item_menu").style.display = "none";
         document.getElementById("website_name_input").value = "";
         document.getElementById("website_url_input").value = "";
-        // $("#addButton").rotate(90);
-        // hidden = true;
+        $("#addButton").rotate(90);
+        hidden = true;
     }
+
 
     function isUrlValid(url) {
         if (url.length == 0) {
@@ -439,11 +440,9 @@
         $('html,body').animate({
                 scrollTop: $("#add_item_menu").offset().top
         },500);
-        
+
         if (hidden) {
             document.getElementById("add_item_menu").style.display = "block";
-
-
 
             hidden = false;
             $("#addButton").rotate(45);
@@ -475,6 +474,60 @@
 
 
     }
+
+    function deleteWebsite(){
+        // called when the delete button is clicked
+        // send the request to the server and then just refresh
+        // the page so that we don't need to delete the website
+        // from the page since it was just appended to the page html
+        // TODO when editing make the website url uneditable
+
+        var website_url = document.getElementById("website_url_input").value;
+
+        clearInfo();
+
+        firebase.auth().currentUser.getIdToken().then(function(idToken) {
+            console.log("delete website");
+
+            var formdata = new FormData();
+            formdata.append("token", idToken);
+            formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"))
+            formdata.append("website_url", "https://www.delete.net");
+
+            $.ajax({
+                type: 'POST',
+                url: 'deleteWebsite',
+                data: formdata,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    var response = JSON.parse(data);
+                    console.log(response);
+
+                    if (response.status == 403) {
+                        // unauthorized
+                        signout();
+                    } else if (response.status == 400) {
+                        // invalid
+                        console.log("invalid data");
+                    } else if (response.status == 201) {
+                        // refresh the page
+                        // true = load the contents from server instead of cache
+                        window.location.reload(true);
+
+                    }
+
+                },
+            });
+
+
+        }).catch(function(error) {
+            signout();
+        });
+    }
+
+
+
 </script>
 
 </html>
