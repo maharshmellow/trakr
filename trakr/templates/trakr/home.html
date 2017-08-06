@@ -41,18 +41,18 @@
                         <div class="website_title">Jason Lang Scholarship</div>
                         <div class="website_value">http://ualberta.ca/jasonlang</div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="modified_title">Last Modified</div>
                         <div class="modified_value">June 12, 2017</div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="check_title">Last Checked</div>
                         <div class="check_value">July 15, 2017 9:30PM</div>
                     </div>
-                    <div class="col-md-2">
+                    <!-- <div class="col-md-2">
                         <div class="services_title">Services</div>
                         <div class="services_value">Email, SMS, Slack, API</div>
-                    </div>
+                    </div> -->
                     <div class="col-md-1">
                         <div class="extra">
                             <img class="undraggable" src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
@@ -343,7 +343,7 @@
         $("#addButton").rotate(90);
         hidden = true;
     }
-    
+
     function isUrlValid(url) {
         if (url.length == 0) {
             return true;
@@ -361,6 +361,11 @@
             // TODO show the error message here
             console.log("error");
             return;
+        }
+        else{
+            // add the website to the page
+            addItem_webpage(website_name, website_url,  "Never", "Never");
+            clearInfo();
         }
 
         firebase.auth().currentUser.getIdToken().then(function(idToken) {
@@ -420,18 +425,17 @@
         }
     }
 
-    function testing() {
+    function addItem_webpage(website_name, website_url, modified_date, checked_date) {
         var a = '<div class="col-md-1"></div><div class="col-md-10"><hr></div><div class="col-md-1"></div><div class="website"><div class="col-md-4"><div class="website_title">';
-        a += 'Website Name';
+        a += website_name;
         a += '</div><div class="website_value">';
-        a += 'Website URL';
-        a += '</div></div><div class="col-md-2 "><div class="modified_title">Last Modified</div><div class="modified_value">';
-        a += 'June 12, 2017';
-        a += '</div></div><div class="col-md-2"><div class="check_title">Last Checked</div><div class="check_value">';
-        a += "July 15, 2017 9:30PM";
-        a += '</div></div><div class="col-md-2"><div class="services_title">Services</div><div class="services_value">';
-        a += 'Email';
-        a += '</div></div><div class="col-md-1"><div class="extra"><img class="undraggable"';
+        a += website_url;
+        a += '</div></div><div class="col-md-3 "><div class="modified_title">Last Modified</div><div class="modified_value">';
+        a += modified_date;
+        a += '</div></div><div class="col-md-3"><div class="check_title">Last Checked</div><div class="check_value">';
+        a += checked_date;
+        a += '</div></div>';
+        a += '<div class="col-md-1"><div class="extra"><img class="undraggable"';
         a +=
             "src=\"{% static 'trakr/images/orb.svg' %}\" style=\"padding-left: 10px;\"></img></div></div><div class=\"col-md-1 center-block\"><div class=\"extra\"><input class=\"undraggable\" type=\"image\" src=\"{% static 'trakr/images/orb3.svg' %}\"";
 
