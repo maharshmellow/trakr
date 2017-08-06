@@ -69,49 +69,41 @@ def updateWebsites(request):
             return HttpResponse(json.dumps({"status":403}))
 
         # get the website information
-        uid = decoded_token["uid"]
-        website_name = request.POST.get("website_name")
-        website_url = request.POST.get("website_url")
-        frequency = request.POST.get("frequency")
-        contacts = request.POST.get("contacts").split(",")
-        hook_url = request.POST.get("hook_url")
+        try:
+            uid = decoded_token["uid"]
+            website_name = request.POST.get("website_name")
+            website_url = request.POST.get("website_url")
+            modified_time = request.POST.get("modified_time")
+            checked_time = request.POST.get("checked_time")
 
-        # error checking
-        if not website_name or not website_url or not frequency or not contacts:
+            # error checking
+            if not website_name or not website_url or not validators.url(website_url):
+                raise
+        except:
             return HttpResponse(json.dumps({"status":400}))
 
-        if not validators.url(website_url):
-            return HttpResponse(json.dumps({"status":400}))
-
-        for contact in contacts:
-            # check if the contact is a proper email or phone number
-            if not contact.isdigit() and not validators.email(contact):
-                return HttpResponse(json.dumps({"status":400}))
-
-        if hook_url and not validators.url(hook_url):
-            return HttpResponse(json.dumps({"status":400}))
         # update the user data wth the new website
         user = aws_models.User.get(uid)
         old_websites = user.websites
         print("old", old_websites)
 
-        website = {website_url:{"name": website_name, "frequency": frequency, "active": 1, "contacts":contacts}}
+        website = {website_url:{"name": website_name, "modified_time": modified_time, "checked_time":checked_time}}
 
         # add the new website to the old dictionary
         # would normally use z = {**x, **y} to merge two dictionaries but in this case we have an array
         # inside the dictionary so those cannot be merged using that method
+
         new_websites = old_websites.copy()
         new_websites.update(website)
+
         # new_websites = {}     # to clear the data
         print("new", new_websites)
         # if old_websites == new_websites then nothing has changed since the merge handled the duplicates
+        # NOTE
         if old_websites != new_websites:
             user.update({"websites":{"value":new_websites, "action":"PUT"}})
             user.refresh()
             print("final", user.websites)
-
-            # TODO add to the websites table
-
 
         return HttpResponse(json.dumps({"status":201}))
         # old_websites += {"https://www.maharsh.net"}

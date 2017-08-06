@@ -101,6 +101,8 @@
 
             <button class="center-block" id="submitbutton" onclick="updateWebsite();">Submit</button>
             <br>
+            <button class="center-block" id="deleteButton" onclick="updateWebsite();">Delete</button>
+            <br>
         </div>
     </div>
 </body>
@@ -115,6 +117,17 @@
         width: 180px;
         height: 40px;
         color: white;
+    }
+    #deleteButton {
+        margin-bottom: 10px;
+        background: #FF7676;
+        border-radius: 90px;
+        outline: none;
+        border: none;
+        width: 180px;
+        height: 40px;
+        color: white;
+        display: none;
     }
 
     .notification_option {
@@ -274,18 +287,18 @@
         width: 30px;
     }
 </style>
+
 <script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
 <script>
     var hidden = true;
 
-    $("#addButton").click(function() {
-        if (hidden){
+    if (hidden){
+        $("#addButton").click(function() {
             $('html,body').animate({
                     scrollTop: $("#add_item_menu").offset().top
-                },
-                500);
-        }
-    });
+            },500);
+        });
+    }
 
     // get the initial user data
     firebase.auth().onAuthStateChanged(user => {
@@ -325,6 +338,7 @@
     function show_add_website_menu() {
         if (hidden) {
             clearInfo();
+            document.getElementById("deleteButton").style.display = "none";
             document.getElementById("add_item_menu").style.display = "block";
             hidden = false;
             $("#addButton").rotate(45);
@@ -332,6 +346,7 @@
             document.getElementById("add_item_menu").style.display = "none";
             hidden = true;
             $("#addButton").rotate(90);
+            document.getElementById("deleteButton").style.display = "none";
         }
 
     }
@@ -340,8 +355,8 @@
         document.getElementById("add_item_menu").style.display = "none";
         document.getElementById("website_name_input").value = "";
         document.getElementById("website_url_input").value = "";
-        $("#addButton").rotate(90);
-        hidden = true;
+        // $("#addButton").rotate(90);
+        // hidden = true;
     }
 
     function isUrlValid(url) {
@@ -374,11 +389,13 @@
             var formdata = new FormData();
             formdata.append("token", idToken);
             formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"))
-            formdata.append("website_name", "maharsh.net homepage");
-            formdata.append("website_url", "https://www.maharsh.net");
-            formdata.append("frequency", 1);
-            formdata.append("contacts", ["patel@maharsh.net", "abc@gmail.com"]);
-            formdata.append("hook_url", "https://www.someurl.com/hook");
+            formdata.append("website_name", "delete this");
+            formdata.append("website_url", "https://www.delete.net");
+            formdata.append("modified_time", "Never");
+            formdata.append("checked_time", "Never")
+            // formdata.append("frequency", 1);
+            // formdata.append("contacts", ["patel@maharsh.net", "abc@gmail.com"]);
+            // formdata.append("hook_url", "https://www.someurl.com/hook");
 
 
             // TODO actually display the website on the page here
@@ -417,9 +434,17 @@
     function editItem(website_name, website_url) {
         document.getElementById("website_name_input").value = website_name;
         document.getElementById("website_url_input").value = website_url;
+        document.getElementById("deleteButton").style.display = "block";
 
+        $('html,body').animate({
+                scrollTop: $("#add_item_menu").offset().top
+        },500);
+        
         if (hidden) {
             document.getElementById("add_item_menu").style.display = "block";
+
+
+
             hidden = false;
             $("#addButton").rotate(45);
         }
