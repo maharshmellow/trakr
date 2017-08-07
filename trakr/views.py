@@ -60,6 +60,17 @@ def loadUserData(request):
 
         # return all information back and add to the render as a json object
         return HttpResponse(json.dumps({"status":1, "uid":uid, "email":email, "websites":user.websites}))
+def service(request):
+    uid = "mOrbZXW0R4MAme2Sdvt3EGZp09L2"
+    user = aws_models.User.get(uid)
+    print(user)
+    old_websites = user.websites
+
+    print(old_websites["https://www.maharsh.net"]["modified_time"])
+
+    # website = {"$$":{"name": "$$", "modified_time": "$$", "checked_time":"$$", "source_code":""}}
+
+    return HttpResponse("1")
 
 def updateWebsites(request):
     # adds or edits the given website for the user and then returns a status code
@@ -84,31 +95,40 @@ def updateWebsites(request):
 
         # update the user data wth the new website
         user = aws_models.User.get(uid)
+        print(user)
         old_websites = user.websites
         print("old", old_websites)
 
-        website = {website_url:{"name": website_name, "modified_time": modified_time, "checked_time":checked_time}}
+        # maintain the source code because we don't want to modify that
+        # TODO do the same thing with the times so we don't need to send them back and forth
 
+        old_source_code = old_websites[website_url]["source_code"]
+
+        website = {website_url:{"name": website_name, "modified_time": modified_time, "checked_time":checked_time, "source_code":old_source_code}}
+
+        print(old_websites)
         # add the new website to the old dictionary
         # would normally use z = {**x, **y} to merge two dictionaries but in this case we have an array
         # inside the dictionary so those cannot be merged using that method
-
-        new_websites = old_websites.copy()
-        new_websites.update(website)
-
-        # new_websites = {}     # to clear the data
-        print("new", new_websites)
-        # if old_websites == new_websites then nothing has changed since the merge handled the duplicates
-        # NOTE
-        if old_websites != new_websites:
-            user.update({"websites":{"value":new_websites, "action":"PUT"}})
-            user.refresh()
-            print("final", user.websites)
+        # 1
+        # new_websites = old_websites.copy()
+        # new_websites.update(website)
+        #
+        # # new_websites = {}     # to clear the data
+        # # 2
+        # print("new", new_websites)
+        # # if old_websites == new_websites then nothing has changed since the merge handled the duplicates
+        # # NOTE 3
+        # if old_websites != new_websites:
+        #     user.update({"websites":{"value":new_websites, "action":"PUT"}})
+        #     user.refresh()
+        #     print("final", user.websites)
 
         return HttpResponse(json.dumps({"status":201}))
         # old_websites += {"https://www.maharsh.net"}
     return HttpResponse(json.dumps({"status":400}))
 
+    # NOTE when editing, how to maintain source code
 
 def deleteWebsite(request):
     if request.method == "POST":
