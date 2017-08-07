@@ -84,8 +84,6 @@ def updateWebsites(request):
             uid = decoded_token["uid"]
             website_name = request.POST.get("website_name")
             website_url = request.POST.get("website_url")
-            modified_time = request.POST.get("modified_time")
-            checked_time = request.POST.get("checked_time")
 
             # error checking
             if not website_name or not website_url or not validators.url(website_url):
@@ -95,19 +93,23 @@ def updateWebsites(request):
 
         # update the user data wth the new website
         user = aws_models.User.get(uid)
-        print(user)
         old_websites = user.websites
-        print("old", old_websites)
 
-        # maintain the source code because we don't want to modify that
-        # TODO do the same thing with the times so we don't need to send them back and forth
-
-        old_source_code = old_websites[website_url]["source_code"]
+        # maintain the source code, and modified/checekd because we didn't modify that here
+        try:
+            old_source_code = old_websites[website_url]["source_code"]
+            modified_time = old_websites[website_url]["modified_time"]
+            checked_time = old_websites[website_url]["checked_time"]
+        except:
+            # if the website is new, then we need to initialize the values
+            old_source_code = ""
+            modified_time = "Never"
+            checked_time = "Never"
 
         website = {website_url:{"name": website_name, "modified_time": modified_time, "checked_time":checked_time, "source_code":old_source_code}}
 
         print(old_websites)
-        # add the new website to the old dictionary
+        # merge the two dictionaries
         # would normally use z = {**x, **y} to merge two dictionaries but in this case we have an array
         # inside the dictionary so those cannot be merged using that method
         new_websites = old_websites.copy()
@@ -121,7 +123,7 @@ def updateWebsites(request):
             print("final", user.websites)
 
         return HttpResponse(json.dumps({"status":201}))
-        # old_websites += {"https://www.maharsh.net"}
+
     return HttpResponse(json.dumps({"status":400}))
 
 

@@ -370,6 +370,7 @@
     }
 
     function updateWebsite() {
+        // adds or edits a website
         var website_name = document.getElementById("website_name_input").value;
         var website_url = document.getElementById("website_url_input").value;
 
@@ -390,17 +391,8 @@
             var formdata = new FormData();
             formdata.append("token", idToken);
             formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"))
-            formdata.append("website_name", "delete this");
-            formdata.append("website_url", "https://www.delete.net");
-            formdata.append("modified_time", "Never");
-            formdata.append("checked_time", "Never")
-            // formdata.append("frequency", 1);
-            // formdata.append("contacts", ["patel@maharsh.net", "abc@gmail.com"]);
-            // formdata.append("hook_url", "https://www.someurl.com/hook");
-
-
-            // TODO actually display the website on the page here
-
+            formdata.append("website_name", "brand new");
+            formdata.append("website_url", "https://www.new.net");
 
             $.ajax({
                 type: 'POST',
@@ -416,8 +408,9 @@
                         // unauthorized
                         signout();
                     } else if (response.status == 400) {
-                        // invalid
+                        // invalid TODO refresh the page
                         console.log("invalid data");
+
                     } else if (response.status == 201) {
                         // TODO success
 
