@@ -110,25 +110,20 @@ def updateWebsites(request):
         # add the new website to the old dictionary
         # would normally use z = {**x, **y} to merge two dictionaries but in this case we have an array
         # inside the dictionary so those cannot be merged using that method
-        # 1
-        # new_websites = old_websites.copy()
-        # new_websites.update(website)
-        #
-        # # new_websites = {}     # to clear the data
-        # # 2
-        # print("new", new_websites)
-        # # if old_websites == new_websites then nothing has changed since the merge handled the duplicates
-        # # NOTE 3
-        # if old_websites != new_websites:
-        #     user.update({"websites":{"value":new_websites, "action":"PUT"}})
-        #     user.refresh()
-        #     print("final", user.websites)
+        new_websites = old_websites.copy()
+        new_websites.update(website)
+
+        print("new", new_websites)
+
+        if old_websites != new_websites:
+            user.update({"websites":{"value":new_websites, "action":"PUT"}})
+            user.refresh()
+            print("final", user.websites)
 
         return HttpResponse(json.dumps({"status":201}))
         # old_websites += {"https://www.maharsh.net"}
     return HttpResponse(json.dumps({"status":400}))
 
-    # NOTE when editing, how to maintain source code
 
 def deleteWebsite(request):
     if request.method == "POST":
