@@ -324,6 +324,21 @@
                         }
                         console.log(1);
                         console.log(response);
+                        // TODO add the websites to the page here
+                        var websites = response.websites;
+                        for (website in websites){
+
+                            var website_name = websites[website].name;
+                            var website_url = website;
+                            var modified_date =  websites[website].modified_time;
+                            var checked_date = websites[website].checked_time;
+                            addItem_webpage(website_name, website_url, modified_date, checked_date);
+
+                            // console.log(response.websites[website].name);
+                        }
+                        // addItem_webpage();
+                        // website_name, website_url, modified_date, checked_date)
+
                         document.getElementsByTagName("body")[0].style.display = "block";
                     },
                 });
