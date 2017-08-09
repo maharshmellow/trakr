@@ -34,38 +34,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-10 col-md-push-1" id="websites">
-                <!-- <div class="spacer1"></div> -->
-                <div class="website">
-                    <div class="col-md-4">
-                        <div class="website_title">Jason Lang Scholarship</div>
-                        <div class="website_value">http://ualberta.ca/jasonlang</div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="modified_title">Last Modified</div>
-                        <div class="modified_value">June 12, 2017</div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="check_title">Last Checked</div>
-                        <div class="check_value">July 15, 2017 9:30PM</div>
-                    </div>
-                    <!-- <div class="col-md-2">
-                        <div class="services_title">Services</div>
-                        <div class="services_value">Email, SMS, Slack, API</div>
-                    </div> -->
-                    <div class="col-md-1">
-                        <div class="extra">
-                            <img class="undraggable" src="{% static 'trakr/images/orb.svg' %}" style="padding-left: 10px;"></img>
-                        </div>
-                    </div>
-                    <div class="col-md-1 center-block">
-                        <div class="extra">
-
-                            <input class="undraggable" type="image" src="{% static 'trakr/images/orb3.svg' %}" name="1111" style="padding-top:2px; padding-left: 20px; opacity: 0.3" onclick="editItem('website_name', 'website_url')" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="col-md-10 col-md-push-1" id="websites"></div>
         </div>
 
 
@@ -323,7 +292,7 @@
                         }
                         console.log(1);
                         console.log(response);
-                        // TODO add the websites to the page here
+
                         var websites = response.websites;
                         for (website in websites){
 
@@ -333,10 +302,7 @@
                             var checked_date = websites[website].checked_time;
                             addItem_webpage(website_name, website_url, modified_date, checked_date);
 
-                            // console.log(response.websites[website].name);
                         }
-                        // addItem_webpage();
-                        // website_name, website_url, modified_date, checked_date)
 
                         document.getElementsByTagName("body")[0].style.display = "block";
                     },
@@ -377,7 +343,7 @@
 
     function isUrlValid(url) {
         if (url.length == 0) {
-            return true;
+            return false;
         }
         var urlregex =
             /^(https?|ftp):\/\/([a-zA-Z0-9.-]+(:[a-zA-Z0-9.&%$-]+)*@)*((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])){3}|([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(:[0-9]+)*(\/($|[a-zA-Z0-9.,?'\\+&%$#=~_-]+))*$/;
@@ -406,8 +372,8 @@
             var formdata = new FormData();
             formdata.append("token", idToken);
             formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"))
-            formdata.append("website_name", "brand new");
-            formdata.append("website_url", "https://www.new.net");
+            formdata.append("website_name", website_name);
+            formdata.append("website_url", website_url);
 
             $.ajax({
                 type: 'POST',
@@ -424,7 +390,6 @@
                         signout();
                     } else if (response.status == 400) {
                         // invalid TODO refresh the page
-                        console.log("invalid data");
                         window.location.reload(true);
 
                     } else if (response.status == 201) {
@@ -467,7 +432,13 @@
     }
 
     function addItem_webpage(website_name, website_url, modified_date, checked_date) {
-        var a = '<div class="col-md-1"></div><div class="col-md-10"><hr></div><div class="col-md-1"></div><div class="website"><div class="col-md-4"><div class="website_title">';
+        var a = "";
+        if ($("#websites").html().length != 0){
+            // only add a horizontal line if there is already a website displayed above
+
+            a += '<div class="col-md-1"></div><div class="col-md-10"><hr></div><div class="col-md-1"></div>';
+        }
+        a += '<div class="website"><div class="col-md-4"><div class="website_title">';
         a += website_name;
         a += '</div><div class="website_value">';
         a += website_url;
