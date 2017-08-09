@@ -27,7 +27,6 @@
             <div class="col-md-4 text-center" id="menu">
                 <a href="#" class="menuitem">Logout</a>
                 <a href="" class="menuitem">Status</a>
-                <a href="#" class="menuitem">Account</a>
                 <a href="/home" class="menuitem">Home</a>
             </div>
             <div class="col-md-1"></div>
@@ -226,7 +225,7 @@ a:hover {
 }
 
 hr {
-    margin: 0;class="undraggable" 
+    margin: 0;class="undraggable"
 }
 
 .pulse {
@@ -255,8 +254,8 @@ hr {
 }
 
 .undraggable{
-    user-drag: none; 
-    -moz-user-select: none; 
+    user-drag: none;
+    -moz-user-select: none;
     -webkit-user-drag: none;
 }
 </style>
@@ -267,15 +266,15 @@ hr {
 
 // check if the user is already logged in
 
-//TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION 
+//TODO DO A GET REQUEST FOR THE INFORMATION AND SEND THE TOKEN THERE FOR VERIFICATION
 // firebase.auth().onAuthStateChanged(user => {
 //     if (user) {
 //         firebase.auth().currentUser.getIdToken().then(function(idToken) {
 
-//             // TODO DO THE REQUEST HERE 
+//             // TODO DO THE REQUEST HERE
 //             // $.get("/home", ...
 
-//             var info = "Email: " + user.email + "<br>ID:" + user.uid + "<br>Token:" + idToken; 
+//             var info = "Email: " + user.email + "<br>ID:" + user.uid + "<br>Token:" + idToken;
 //             document.getElementById("info").innerHTML = info;
 //         }).catch(function(error) {
 //             signout();

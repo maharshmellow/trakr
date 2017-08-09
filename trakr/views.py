@@ -20,9 +20,6 @@ def index(request):
 def home(request):
     return render(request, "trakr/home.html")
 
-def account(request):
-    return render(request, "trakr/account.html")
-
 def status(request):
     return render(request, "trakr/status.html")
 

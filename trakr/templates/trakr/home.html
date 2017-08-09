@@ -27,7 +27,6 @@
             <div class="col-md-4 text-center" id="menu">
                 <a href="javascript:signout()" class="menuitem">Logout</a>
                 <a href="/status" class="menuitem">Status</a>
-                <a href="/account" class="menuitem">Account</a>
                 <a href="#" class="menuitem">Home</a>
             </div>
             <div class="col-md-1"></div>
@@ -46,7 +45,7 @@
             <div class="row">
                 <div class="col-md-1 col-xs-2"></div>
                 <div class="col-md-10 col-xs-8 text-center">
-                    <div id="add_item_label" style="float: left; padding-top:10px; ">Website Name</div>
+                    <div style="float: left; padding-top:10px; ">Website Name</div>
                     <input class="add_item_input" id="website_name_input" />
                 </div>
                 <div class="col-md-1 col-xs-2"></div>
@@ -54,7 +53,7 @@
             <div class="row">
                 <div class="col-md-1 col-xs-2"></div>
                 <div class="col-md-10 col-xs-8 text-center">
-                    <div id="add_item_label" style="float: left;padding-top:10px;">Website Url</div>
+                    <div style="float: left;padding-top:10px;">Website Url</div>
                     <input class="add_item_input" id="website_url_input" />
                 </div>
                 <div class="col-md-1"></div>
@@ -62,11 +61,17 @@
             <div class="row">
                 <div class="col-md-1 col-xs-2"></div>
                 <div class="col-md-10 col-xs-8 text-center">
-                    <div id="add_item_label" style="padding-top:40px;" class="text-center">Websites will be checked for updates every 30 minutes</div>
+                    <div style="padding-top:40px;" class="text-center">Websites will be checked for updates every 30 minutes.</div>
                 </div>
                 <div class="col-md-1 col-xs-2"></div>
             </div>
-            <br>
+            <div class="row">
+                <div class="col-md-1 col-xs-2"></div>
+                <div class="col-md-10 col-xs-8 text-center">
+                    <div id="error_message" style="padding-top:40px; color: #FF7676; visibility: hidden;" class="text-center">Invalid Input</div>
+                </div>
+                <div class="col-md-1 col-xs-2"></div>
+            </div>
 
             <button class="center-block" id="submitbutton" onclick="updateWebsite();">Submit</button>
             <br>
@@ -316,6 +321,8 @@
     });
 
     function show_add_website_menu() {
+        edit_mode = false;
+        document.getElementById("error_message").style.visibility = "hidden";
         if (hidden) {
             clearInfo();
             document.getElementById("deleteButton").style.display = "none";
@@ -356,7 +363,8 @@
         var website_url = document.getElementById("website_url_input").value;
 
         if (website_name.length == 0 || website_url.length == 0 || !isUrlValid(website_url)) {
-            // TODO show the error message here
+            document.getElementById("error_message").style.visibility = "visible";
+
             console.log("error");
             return;
         }
@@ -389,20 +397,17 @@
                         // unauthorized
                         signout();
                     } else if (response.status == 400) {
-                        // invalid TODO refresh the page
+                        // invalid
                         window.location.reload(true);
 
                     } else if (response.status == 201) {
-                        // TODO success
+                        // success - only refresh if something has been edited
                         if (edit_mode){
                             window.location.reload(true);
                         }
-
                     }
-
                 },
             });
-
 
         }).catch(function(error) {
             signout();
@@ -411,6 +416,7 @@
 
     function editItem(website_name, website_url) {
         edit_mode = true;
+        document.getElementById("error_message").style.visibility = "hidden";
 
         document.getElementById("website_name_input").value = website_name;
         document.getElementById("website_url_input").value = website_url;
@@ -513,6 +519,16 @@
             signout();
         });
     }
+
+
+    // submit on enter key
+
+    $("#website_url_input").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            updateWebsite();
+        }
+    });
+
 
 
 
