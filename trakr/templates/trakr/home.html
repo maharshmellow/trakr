@@ -291,6 +291,7 @@
 <script type="text/javascript" src="http://beneposto.pl/jqueryrotate/js/jQueryRotateCompressed.js"></script>
 <script>
     var hidden = true;
+    var edit_mode = false;
 
     if (hidden){
         $("#addButton").click(function() {
@@ -394,11 +395,11 @@
             console.log("error");
             return;
         }
-        else{
+        else if (!edit_mode){
             // add the website to the page
             addItem_webpage(website_name, website_url,  "Never", "Never");
-            clearInfo();
         }
+        clearInfo();
 
         firebase.auth().currentUser.getIdToken().then(function(idToken) {
             console.log("addWebsite");
@@ -425,9 +426,13 @@
                     } else if (response.status == 400) {
                         // invalid TODO refresh the page
                         console.log("invalid data");
+                        window.location.reload(true);
 
                     } else if (response.status == 201) {
                         // TODO success
+                        if (edit_mode){
+                            window.location.reload(true);
+                        }
 
                     }
 
@@ -441,6 +446,8 @@
     }
 
     function editItem(website_name, website_url) {
+        edit_mode = true;
+
         document.getElementById("website_name_input").value = website_name;
         document.getElementById("website_url_input").value = website_url;
         document.getElementById("deleteButton").style.display = "block";
