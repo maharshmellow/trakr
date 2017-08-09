@@ -356,6 +356,7 @@
             clearInfo();
             document.getElementById("deleteButton").style.display = "none";
             document.getElementById("add_item_menu").style.display = "block";
+            document.getElementById("website_url_input").disabled = false;
             hidden = false;
             $("#addButton").rotate(45);
         } else {
@@ -450,11 +451,9 @@
 
         document.getElementById("website_name_input").value = website_name;
         document.getElementById("website_url_input").value = website_url;
-        document.getElementById("deleteButton").style.display = "block";
 
-        $('html,body').animate({
-                scrollTop: $("#add_item_menu").offset().top
-        },500);
+        document.getElementById("website_url_input").disabled = true;
+        document.getElementById("deleteButton").style.display = "block";
 
         if (hidden) {
             document.getElementById("add_item_menu").style.display = "block";
@@ -462,6 +461,11 @@
             hidden = false;
             $("#addButton").rotate(45);
         }
+        
+        $('html,body').animate({
+                scrollTop: $("#add_item_menu").offset().top
+        },500);
+
     }
 
     function addItem_webpage(website_name, website_url, modified_date, checked_date) {
@@ -507,7 +511,7 @@
             var formdata = new FormData();
             formdata.append("token", idToken);
             formdata.append("csrfmiddlewaretoken", getCookie("csrftoken"))
-            formdata.append("website_url", "https://www.delete.net");
+            formdata.append("website_url", website_url);
 
             $.ajax({
                 type: 'POST',
