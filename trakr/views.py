@@ -105,14 +105,19 @@ def updateWebsites(request):
 
         website = {website_url:{"name": website_name, "modified_time": modified_time, "checked_time":checked_time, "source_code":old_source_code}}
 
-        print(old_websites)
+        print("old_websites", old_websites)
         # merge the two dictionaries
         # would normally use z = {**x, **y} to merge two dictionaries but in this case we have an array
         # inside the dictionary so those cannot be merged using that method
-        new_websites = old_websites.copy()
-        new_websites.update(website)
+        if old_websites:
+            new_websites = old_websites.copy()
+            new_websites.update(website)
+        else:
+            new_websites = website
 
-        print("new", new_websites)
+        print("new_websites", new_websites)
+
+        # print("new", new_websites)
 
         if old_websites != new_websites:
             user.update({"websites":{"value":new_websites, "action":"PUT"}})
