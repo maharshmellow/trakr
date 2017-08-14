@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^updateWebsites$', views.updateWebsites, name="updateWebsites"),
     url(r'^deleteWebsite$', views.deleteWebsite, name="deleteWebsite"),
     url(r'^service$', views.service, name="service"),
+    url(r'^3464b$', views.xavier, name="xavier")
 ]

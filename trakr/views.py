@@ -6,9 +6,18 @@ from firebase_admin import auth
 from firebase_admin import credentials
 import json
 import time
+import pytz
 from .api import aws_models
 from datetime import datetime
 import validators
+from concurrent.futures import ProcessPoolExecutor
+import concurrent.futures
+import hashlib
+import requests
+from bs4 import BeautifulSoup
+from difflib import SequenceMatcher
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 cred = credentials.Certificate("trakr/keys/trakr-39dff-firebase-adminsdk-h091m-d33131032e.json")
 default_app = firebase_admin.initialize_app(cred)
@@ -57,17 +66,132 @@ def loadUserData(request):
 
         # return all information back and add to the render as a json object
         return HttpResponse(json.dumps({"status":1, "uid":uid, "email":email, "websites":user.websites}))
+
+def getHash(url, userID, old_hash):
+    # TODO replace source_code with old_hash
+
+    try:
+        html = requests.get(url, verify=False).text
+    except:
+        # NOTE - in the future there can be an implementation where
+        # we send notifications when there is an error reaching the page
+        # add that notification sending feature right here
+        return {"old_hash": old_hash, "new_hash": old_hash, "user_id":userID, "url":url}
+
+    soup = BeautifulSoup(html, "html.parser")
+    for script in soup(["script", "style"]):
+        script.extract()
+
+    text = soup.get_text()
+    new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
+
+    return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url}
+
+
 def service(request):
-    uid = "mOrbZXW0R4MAme2Sdvt3EGZp09L2"
-    user = aws_models.User.get(uid)
-    print(user)
-    old_websites = user.websites
+    # get a list of all the domains in the database
+    timezone = pytz.timezone("Canada/Mountain")
+    # current_time = datetime.datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST")
 
-    print(old_websites["https://www.maharsh.net"]["modified_time"])
+    users = {}
+    data = json.loads(aws_models.User.dumps())
+    print(data)
+    # print(json.dumps(users_backup))
+    # aws_models.User.loads(json.dumps(users_backup))
+    # # NOTE test
+    # for user in users_backup:
+    #     user_id = user[0]
+    #     if "websites" not in user[1]["attributes"]:
+    #         # this person is not tracking websites
+    #         continue
+    #     else:
+    #         user_websites = json.loads(user[1]["attributes"]["websites"]["S"])
+            # print(user_websites)
+            # for website in user_websites:
+            #     print(website)
 
-    # website = {"$$":{"name": "$$", "modified_time": "$$", "checked_time":"$$", "source_code":""}}
+        # users[user_id] = user[1]["attributes"]
+    # NOTE test end
+    updates = {}            # all the values to update -> {"user_id":{"url":{"modified_time":"new_time"...}...}...}
+    with ProcessPoolExecutor(max_workers=10) as executor:
+        tasks = []
 
-    return HttpResponse("1")
+        for user in data:
+            user_id = user[0]
+            if "websites" not in user[1]["attributes"] or user[1]["attributes"]["websites"]["S"] == "{}":
+                continue
+
+            user_websites = json.loads(user[1]["attributes"]["websites"]["S"])
+
+            for website in user_websites:
+                tasks.append(executor.submit(getHash, website, user_id, user_websites[website]["source_code"]))
+
+        # get all the hashed website and figure out what needs to be changed in the database
+        for future in concurrent.futures.as_completed(tasks):
+            try:
+                result = future.result()
+            except:
+                print("ERROR")
+                continue
+
+            old_hash = result["old_hash"]
+            new_hash = result["new_hash"]
+            user_id = result["user_id"]
+            url = result["url"]
+
+            website_changes = {}       # changes to make for this particular website for this particular user
+            # update the website checked time for this website
+            current_time = datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST")
+            website_changes["checked_time"] = current_time
+
+            if old_hash != new_hash:
+                website_changes["modified_time"] = current_time
+                website_changes["hash"] = new_hash
+
+                if old_hash != "":
+                    # TODO only send a notification if the old_hash != "" (meaning that its the first ping to this website)
+                    print("SEND NOTIFICATION")  # NOTE could also move this notification to the multiprocessing loop
+
+            # need to add
+            if user_id in updates:
+                updates[user_id].append({url:website_changes})
+            else:
+                updates[user_id] = [{url:website_changes}]
+
+            print(old_hash, new_hash, url)
+
+
+    # change everything at once to not waste dynamodb write capacity by updating each user individually
+    for user in data:
+        user_id = user[0]
+
+        # no data for this user has been changed, skip them
+        if user_id not in updates: continue;
+        # skip the users with no websites
+        if "websites" not in user[1]["attributes"] or user[1]["attributes"]["websites"]["S"] == "{}": continue
+
+        user_websites = json.loads(user[1]["attributes"]["websites"]["S"])
+        for website in user_websites:
+            # add to the tasks here
+            current_website = user_websites[website]
+            # make all the modification to this website here
+            # current_website["hash"] = current_website.pop("source_code")
+
+
+
+            current_website["source_code"] = "11:12:11"
+
+
+        user[1]["attributes"]["websites"]["S"] = user_websites
+
+
+    print(data)
+
+
+    return HttpResponse(json.dumps(data))
+
+def xavier(request):
+    return HttpResponse("3464b")
 
 def updateWebsites(request):
     # adds or edits the given website for the user and then returns a status code
