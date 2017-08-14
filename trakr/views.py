@@ -68,8 +68,6 @@ def loadUserData(request):
         return HttpResponse(json.dumps({"status":1, "uid":uid, "email":email, "websites":user.websites}))
 
 def getHash(url, userID, old_hash):
-    # TODO replace source_code with old_hash
-
     try:
         html = requests.get(url, verify=False).text
     except:
@@ -97,7 +95,7 @@ def service(request):
     data = json.loads(aws_models.User.dumps())
     print(data)
     # print(json.dumps(users_backup))
-    # aws_models.User.loads(json.dumps(users_backup))
+
     # # NOTE test
     # for user in users_backup:
     #     user_id = user[0]
@@ -118,14 +116,17 @@ def service(request):
 
         for user in data:
             user_id = user[0]
+
             if "websites" not in user[1]["attributes"] or user[1]["attributes"]["websites"]["S"] == "{}":
                 continue
 
             user_websites = json.loads(user[1]["attributes"]["websites"]["S"])
 
             for website in user_websites:
-                tasks.append(executor.submit(getHash, website, user_id, user_websites[website]["source_code"]))
-
+                try:
+                    tasks.append(executor.submit(getHash, website, user_id, user_websites[website]["hash"]))
+                except:
+                    pass
         # get all the hashed website and figure out what needs to be changed in the database
         for future in concurrent.futures.as_completed(tasks):
             try:
@@ -152,15 +153,16 @@ def service(request):
                     # TODO only send a notification if the old_hash != "" (meaning that its the first ping to this website)
                     print("SEND NOTIFICATION")  # NOTE could also move this notification to the multiprocessing loop
 
-            # need to add
+            # add to the dictionary of updates to make to the database
             if user_id in updates:
-                updates[user_id].append({url:website_changes})
+                updates[user_id][url] = website_changes
             else:
-                updates[user_id] = [{url:website_changes}]
+                updates[user_id] = {url:website_changes}        # creating a new dict since it didn't exist yet
 
             print(old_hash, new_hash, url)
 
-
+    print("updates")
+    print(updates)
     # change everything at once to not waste dynamodb write capacity by updating each user individually
     for user in data:
         user_id = user[0]
@@ -175,19 +177,16 @@ def service(request):
             # add to the tasks here
             current_website = user_websites[website]
             # make all the modification to this website here
-            # current_website["hash"] = current_website.pop("source_code")
 
+            for update_item in updates[user_id][website]:
+                update_value = updates[user_id][website][update_item]
+                current_website[update_item] = update_value
 
-
-            current_website["source_code"] = "11:12:11"
-
-
-        user[1]["attributes"]["websites"]["S"] = user_websites
-
+        user[1]["attributes"]["websites"]["S"] = json.dumps(user_websites)
 
     print(data)
-
-
+    # TODO upload the new data to dynamodb
+    aws_models.User.loads(json.dumps(data))
     return HttpResponse(json.dumps(data))
 
 def xavier(request):
@@ -218,16 +217,16 @@ def updateWebsites(request):
 
         # maintain the source code, and modified/checekd because we didn't modify that here
         try:
-            old_source_code = old_websites[website_url]["source_code"]
+            old_hash = old_websites[website_url]["hash"]
             modified_time = old_websites[website_url]["modified_time"]
             checked_time = old_websites[website_url]["checked_time"]
         except:
             # if the website is new, then we need to initialize the values
-            old_source_code = ""
+            old_hash = ""
             modified_time = "Never"
             checked_time = "Never"
 
-        website = {website_url:{"name": website_name, "modified_time": modified_time, "checked_time":checked_time, "source_code":old_source_code}}
+        website = {website_url:{"name": website_name, "modified_time": modified_time, "checked_time":checked_time, "hash":old_hash}}
 
         print("old_websites", old_websites)
         # merge the two dictionaries
