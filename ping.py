@@ -36,16 +36,8 @@ def getHash(url, userID, old_hash, email):
     text = soup.get_text()
     new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
 
-    # send notification if change detected
-    if old_hash != "" and old_hash != new_hash:
-        print("SEND NOTIFICATION")
-        to_email = Email(email)
-        subject = "Trakr - Website Change Detected"
-        content = Content("text/plain", url+" was updated on" + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
-        mail = Mail(from_email, subject, to_email, content)
-        response = sg.client.mail.send.post(request_body=mail.get())
 
-    return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url}
+    return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url, "email":email}
 
 def main():
     print("Ping Started at:", time.time())
@@ -65,7 +57,7 @@ def main():
                 continue
 
             user_websites = json.loads(user[1]["attributes"]["websites"]["S"])
-            email = json.loads(user[1]["attributes"]["email"]["S"])
+            email = user[1]["attributes"]["email"]["S"]
 
             for website in user_websites:
                 tasks.append(executor.submit(getHash, website, user_id, user_websites[website]["hash"], email))
@@ -81,6 +73,7 @@ def main():
             new_hash = result["new_hash"]
             user_id = result["user_id"]
             url = result["url"]
+            email = result["email"]
 
             website_changes = {}       # changes to make for this particular website for this particular user
             # update the website checked time for this website
@@ -90,6 +83,13 @@ def main():
             if old_hash != new_hash:
                 website_changes["modified_time"] = current_time
                 website_changes["hash"] = new_hash
+                # # send notification if change detected
+                if old_hash != "" and old_hash != new_hash:
+                    to_email = Email(email)
+                    subject = "Trakr - Website Change Detected"
+                    content = Content("text/plain", url+" was updated on" + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
+                    mail = Mail(from_email, subject, to_email, content)
+                    response = sg.client.mail.send.post(request_body=mail.get())
 
             # add to the dictionary of updates to make to the database
             if user_id in updates:
