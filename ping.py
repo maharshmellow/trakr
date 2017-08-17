@@ -36,7 +36,6 @@ def getHash(url, userID, old_hash, email):
     text = soup.get_text()
     new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
 
-
     return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url, "email":email}
 
 def main():
@@ -44,23 +43,21 @@ def main():
     timezone = pytz.timezone("Canada/Mountain")
     users = {}
     data = json.loads(aws_models.User.dumps())
-
-
     updates = {}            # all the values to update -> {"user_id":{"url":{"modified_time":"new_time"...}...}...}
+
     with ProcessPoolExecutor(max_workers=10) as executor:
         tasks = []
-
         for user in data:
             user_id = user[0]
 
             if "websites" not in user[1]["attributes"] or user[1]["attributes"]["websites"]["S"] == "{}":
                 continue
-
             user_websites = json.loads(user[1]["attributes"]["websites"]["S"])
             email = user[1]["attributes"]["email"]["S"]
 
             for website in user_websites:
                 tasks.append(executor.submit(getHash, website, user_id, user_websites[website]["hash"], email))
+
         # get all the hashed website and figure out what needs to be changed in the database
         for future in concurrent.futures.as_completed(tasks):
             try:
@@ -83,11 +80,11 @@ def main():
             if old_hash != new_hash:
                 website_changes["modified_time"] = current_time
                 website_changes["hash"] = new_hash
-                # # send notification if change detected
+                # send notification if change detected
                 if old_hash != "" and old_hash != new_hash:
                     to_email = Email(email)
                     subject = "Trakr - Website Change Detected"
-                    content = Content("text/plain", url+" was updated on" + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
+                    content = Content("text/plain", url+" was updated on " + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
                     mail = Mail(from_email, subject, to_email, content)
                     response = sg.client.mail.send.post(request_body=mail.get())
 
@@ -99,8 +96,6 @@ def main():
 
             print(old_hash, new_hash, url)
 
-    # print("updates")
-    # print(updates)
     # change everything at once to not waste dynamodb write capacity by updating each user individually
     for user in data:
         user_id = user[0]
@@ -122,7 +117,7 @@ def main():
 
         user[1]["attributes"]["websites"]["S"] = json.dumps(user_websites)
 
-    print(data)
+    # print(data)
     # upload the new data to dynamodb
     aws_models.User.loads(json.dumps(data))
     print("Ping Ended at:", time.time())
