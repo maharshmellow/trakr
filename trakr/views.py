@@ -121,6 +121,8 @@ def updateWebsites(request):
         if old_websites != new_websites:
             user.update({"websites":{"value":new_websites, "action":"PUT"}})
             user.refresh()
+
+
             print("final", user.websites)
 
         return HttpResponse(json.dumps({"status":201}))
