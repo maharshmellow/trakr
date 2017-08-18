@@ -15,6 +15,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 import sendgrid
 import os
 from sendgrid.helpers.mail import *
+import traceback
 
 sg = sendgrid.SendGridAPIClient(apikey=os.environ.get("SENDGRID"))
 from_email = Email("trakr@maharsh.net")
@@ -41,7 +42,7 @@ def getHash(url, userID, old_hash, email):
     new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
     # for debugging
     print(text)
-
+    timezone = pytz.timezone("Canada/Mountain")
     if new_hash != old_hash and old_hash != "":
         to_email = Email(email)
         subject = "Trakr - Website Change Detected"
@@ -76,8 +77,9 @@ def main():
         for future in concurrent.futures.as_completed(tasks):
             try:
                 result = future.result()
-            except:
+            except Exception as e:
                 print("ERROR")
+                print(traceback.format_exc())
                 continue
 
             old_hash = result["old_hash"]
@@ -104,6 +106,7 @@ def main():
 
             print(old_hash, new_hash, url, "\n")
 
+    print(updates)
     # change everything at once to not waste dynamodb write capacity by updating each user individually
     for user in data:
         user_id = user[0]
