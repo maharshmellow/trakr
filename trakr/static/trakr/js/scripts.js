@@ -93,7 +93,10 @@ function setInfoMessage(message) {
     document.getElementById("infoMessage").innerHTML = message;
 }
 
+function removeInfoMessage(){
+    document.getElementById("infoMessage").style.display = "none";
+}
+
 function logout(){
     alert("test");
 }
-

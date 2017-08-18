@@ -306,6 +306,12 @@
                         console.log(response);
 
                         var websites = response.websites;
+
+                        // only shows it the first time
+                        if (!websites){
+                            setInfoMessage("Press the + button below to track your first website");
+                        }
+
                         for (website in websites){
 
                             var website_name = websites[website].name;
@@ -343,6 +349,8 @@
             $("#addButton").rotate(90);
             document.getElementById("deleteButton").style.display = "none";
         }
+
+        removeInfoMessage();
 
     }
 
@@ -464,7 +472,6 @@
         a +=
             "src=\"{% static 'trakr/images/orb.svg' %}\" style=\"padding-left: 10px;\"></img></div></div><div class=\"col-md-1 center-block\"><div class=\"extra\"><input class=\"undraggable\" type=\"image\" src=\"{% static 'trakr/images/orb3.svg' %}\"";
 
-        a += 'name="5555"'
         a += 'style="padding-top:2px; padding-left: 20px; opacity: 0.3"';
         a += "onclick=\"editItem('" + website_name + "', '" + website_url + "')\" /></div></div></div>";
 
@@ -535,6 +542,8 @@
             updateWebsite();
         }
     });
+
+
 
 
 
