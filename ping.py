@@ -39,7 +39,8 @@ def getHash(url, userID, old_hash, email):
     text = '\n'.join(chunk for chunk in chunks if chunk)
 
     new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
-
+    # for debugging
+    print(url, text)
     return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url, "email":email}
 
 def main():
