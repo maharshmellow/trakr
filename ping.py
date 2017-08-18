@@ -27,7 +27,7 @@ def getHash(url, userID, old_hash, email):
         # NOTE - in the future there can be an implementation where
         # we send notifications when there is an error reaching the page
         # add that notification sending feature right here
-        return {"old_hash": old_hash, "new_hash": old_hash, "user_id":userID, "url":url, "email":email}
+        return {"old_hash": old_hash, "new_hash": old_hash, "user_id":userID, "url":url}
 
     soup = BeautifulSoup(html, "html.parser")
     for script in soup(["script", "style"]):
@@ -40,8 +40,17 @@ def getHash(url, userID, old_hash, email):
 
     new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
     # for debugging
-    print(url, text, "\n")
-    return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url, "email":email}
+    print(text)
+
+    if new_hash != old_hash and old_hash != "":
+        to_email = Email(email)
+        subject = "Trakr - Website Change Detected"
+        content = Content("text/plain", url+" was updated on " + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
+        mail = Mail(from_email, subject, to_email, content)
+        response = sg.client.mail.send.post(request_body=mail.get())
+
+
+    return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url}
 
 def main():
     print("Ping Started at:", time.time())
@@ -75,7 +84,7 @@ def main():
             new_hash = result["new_hash"]
             user_id = result["user_id"]
             url = result["url"]
-            email = result["email"]
+            # email = result["email"]
 
             website_changes = {}       # changes to make for this particular website for this particular user
             # update the website checked time for this website
@@ -84,14 +93,8 @@ def main():
 
             if old_hash != new_hash:
                 website_changes["hash"] = new_hash
-                # send notification if change detected
                 if old_hash != "":
                     website_changes["modified_time"] = current_time
-                    to_email = Email(email)
-                    subject = "Trakr - Website Change Detected"
-                    content = Content("text/plain", url+" was updated on " + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
-                    mail = Mail(from_email, subject, to_email, content)
-                    response = sg.client.mail.send.post(request_body=mail.get())
 
             # add to the dictionary of updates to make to the database
             if user_id in updates:
@@ -99,7 +102,7 @@ def main():
             else:
                 updates[user_id] = {url:website_changes}        # creating a new dict since it didn't exist yet
 
-            print(old_hash, new_hash, url)
+            print(old_hash, new_hash, url, "\n")
 
     # change everything at once to not waste dynamodb write capacity by updating each user individually
     for user in data:
