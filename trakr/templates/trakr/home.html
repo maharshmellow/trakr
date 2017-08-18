@@ -46,7 +46,7 @@
                 <div class="col-md-1 col-xs-2"></div>
                 <div class="col-md-10 col-xs-8 text-center">
                     <div style="float: left; padding-top:10px; ">Website Name</div>
-                    <input class="add_item_input" id="website_name_input" />
+                    <input class="add_item_input" onkeypress="return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122 || event.charCode == 32" id="website_name_input" />
                 </div>
                 <div class="col-md-1 col-xs-2"></div>
             </div>
