@@ -223,7 +223,13 @@
     .extra {
         padding-left: 10px;
     }
-
+    .website_value{
+        white-space: nowrap;
+        width: 80%;                   /* IE6 needs any width */
+        overflow: hidden;              /* "overflow" value must be different from  visible"*/
+        -o-text-overflow: ellipsis;    /* Opera < 11*/
+        text-overflow:    ellipsis;
+    }
     .website_value,
     .modified_value,
     .check_value,
