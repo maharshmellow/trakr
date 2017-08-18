@@ -16,12 +16,6 @@ function login() {
     password = document.getElementById("passwordInput").value;
 
     firebase.auth().signInWithEmailAndPassword(username, password).catch(function(error) {
-        // var errorCode = error.code;
-        // var errorMessage = error.message;
-
-        // alert(errorCode);
-        // alert(errorMessage);
-        // display the error and clear the password
         document.getElementById("passwordInput").value = "";
         document.getElementById("passwordInput").focus();
         document.getElementById("errorBar").style.visibility = "visible";
@@ -36,14 +30,11 @@ function signup() {
     password = document.getElementById("passwordInput").value;
 
     firebase.auth().createUserWithEmailAndPassword(username, password).catch(function(error) {
-        // Handle Errors here.
-        // var errorCode = error.code;
-        // var errorMessage = error.message;
-
-        // alert(errorCode)
-        console.log(error.code);
         if (error.code == "auth/email-already-in-use"){
             document.getElementById("errorBar").innerHTML = "Email already in use"
+        }
+        else if (error.code == "auth/weak-password"){
+            document.getElementById("errorBar").innerHTML = "Weak Password"
         }
         document.getElementById("usernameInput").value = "";
         document.getElementById("passwordInput").value = "";
@@ -55,7 +46,6 @@ function signup() {
 function signout() {
     firebase.auth().signOut().then(function() {
         window.location.replace("/");
-        // TODO go back to the main page
     }, function(error) {
         console.error('Sign Out Error', error);
     });

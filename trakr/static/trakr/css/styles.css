@@ -23,27 +23,6 @@ body {
 }
 
 
-/*#featuresTag{
-    width: 100px;
-    background-color: #6F06FB;
-    background: #6F06FB;
-    font-size: 14px;
-    font-weight: 100;
-    letter-spacing: 0.19px;
-    padding: 2px 15px 2px 15px;
-    border-radius: 2px;
-}*/
-
-
-/*#infoSectionFeatures{
-    padding-top: 50px;
-    font-size: 18px;
-    font-weight: 100;
-    letter-spacing: 1.0px;
-    line-height: 50px;
-    padding-bottom: 100px;
-}*/
-
 #trakrLogo {
     width: 150px;
 }
@@ -56,6 +35,7 @@ body {
     font-weight: 200;
     /*font-style: italic;*/
     font-size: 18px;
+    color: white;
 }
 
 a {
