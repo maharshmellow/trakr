@@ -34,6 +34,10 @@ def getHash(url, userID, old_hash, email):
         script.extract()
 
     text = soup.get_text()
+    lines = (line.strip() for line in text.splitlines())
+    chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+    text = '\n'.join(chunk for chunk in chunks if chunk)
+
     new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
 
     return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url, "email":email}
