@@ -40,7 +40,7 @@ def getHash(url, userID, old_hash, email):
 
     new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
     # for debugging
-    print(url, text)
+    print(url, text, "\n")
     return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url, "email":email}
 
 def main():
