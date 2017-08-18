@@ -83,10 +83,10 @@ def main():
             website_changes["checked_time"] = current_time
 
             if old_hash != new_hash:
-                website_changes["modified_time"] = current_time
                 website_changes["hash"] = new_hash
                 # send notification if change detected
-                if old_hash != "" and old_hash != new_hash:
+                if old_hash != "":
+                    website_changes["modified_time"] = current_time
                     to_email = Email(email)
                     subject = "Trakr - Website Change Detected"
                     content = Content("text/plain", url+" was updated on " + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
