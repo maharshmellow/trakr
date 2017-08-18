@@ -27,7 +27,7 @@ def getHash(url, userID, old_hash, email):
         # NOTE - in the future there can be an implementation where
         # we send notifications when there is an error reaching the page
         # add that notification sending feature right here
-        return {"old_hash": old_hash, "new_hash": old_hash, "user_id":userID, "url":url}
+        return {"old_hash": old_hash, "new_hash": old_hash, "user_id":userID, "url":url, "email":email}
 
     soup = BeautifulSoup(html, "html.parser")
     for script in soup(["script", "style"]):
