@@ -1,7 +1,7 @@
 import json
 import time
 import pytz
-from trakr.api import aws_models
+from trakr.extras import aws_models
 from datetime import datetime
 import validators
 from concurrent.futures import ProcessPoolExecutor
@@ -30,6 +30,7 @@ def getHash(url, userID, old_hash, email):
         # add that notification sending feature right here
         return {"old_hash": old_hash, "new_hash": old_hash, "user_id":userID, "url":url}
 
+    # load the source code and clean up
     soup = BeautifulSoup(html, "html.parser")
     for script in soup(["script", "style"]):
         script.extract()
@@ -40,10 +41,10 @@ def getHash(url, userID, old_hash, email):
     text = '\n'.join(chunk for chunk in chunks if chunk)
 
     new_hash = hashlib.md5(text.encode("utf-8")).hexdigest()
-    # for debugging
-    print(text)
-    timezone = pytz.timezone("Canada/Mountain")
+
+    # send the email if necessary
     if new_hash != old_hash and old_hash != "":
+        timezone = pytz.timezone("Canada/Mountain")
         to_email = Email(email)
         subject = "Trakr - Website Change Detected"
         content = Content("text/plain", url+" was updated on " + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
@@ -86,7 +87,6 @@ def main():
             new_hash = result["new_hash"]
             user_id = result["user_id"]
             url = result["url"]
-            # email = result["email"]
 
             website_changes = {}       # changes to make for this particular website for this particular user
             # update the website checked time for this website
@@ -95,7 +95,7 @@ def main():
 
             if old_hash != new_hash:
                 website_changes["hash"] = new_hash
-                if old_hash != "":
+                if old_hash != "":      # we don't consider it modified if this is the first ping
                     website_changes["modified_time"] = current_time
 
             # add to the dictionary of updates to make to the database
@@ -106,7 +106,6 @@ def main():
 
             print(old_hash, new_hash, url, "\n")
 
-    print(updates)
     # change everything at once to not waste dynamodb write capacity by updating each user individually
     for user in data:
         user_id = user[0]
@@ -128,7 +127,6 @@ def main():
 
         user[1]["attributes"]["websites"]["S"] = json.dumps(user_websites)
 
-    # print(data)
     # upload the new data to dynamodb
     aws_models.User.loads(json.dumps(data))
     print("Ping Ended at:", time.time())

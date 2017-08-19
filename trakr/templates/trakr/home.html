@@ -480,7 +480,6 @@
 
         $("#websites").append(a);
 
-
     }
 
     function deleteWebsite(){
@@ -488,7 +487,6 @@
         // send the request to the server and then just refresh
         // the page so that we don't need to delete the website
         // from the page since it was just appended to the page html
-        // TODO when editing make the website url uneditable
 
         var website_url = document.getElementById("website_url_input").value;
 
@@ -536,17 +534,11 @@
 
 
     // submit on enter key
-
     $("#website_url_input").on('keyup', function (e) {
         if (e.keyCode == 13) {
             updateWebsite();
         }
     });
-
-
-
-
-
 
 </script>
 
