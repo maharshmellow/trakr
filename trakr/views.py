@@ -9,7 +9,7 @@ from .extras import aws_models
 from datetime import datetime
 import validators
 
-cred = credentials.Certificate("trakr/keys/trakr-39dff-firebase-adminsdk-h091m-d33131032e.json")
+cred = credentials.Certificate("trakr/keys/trakr-39dff-firebase-adminsdk-h091m-e433e7ed82.json")
 default_app = firebase_admin.initialize_app(cred)
 
 @ensure_csrf_cookie
