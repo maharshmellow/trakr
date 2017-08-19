@@ -50,7 +50,7 @@ def getHash(url, userID, old_hash, email):
         content = Content("text/plain", url+" was updated on " + datetime.fromtimestamp(int(time.time()), timezone).strftime("%B %d, %H:%M MST"))
         mail = Mail(from_email, subject, to_email, content)
         response = sg.client.mail.send.post(request_body=mail.get())
-
+        print("Email sent to", email)
 
     return {"old_hash": old_hash, "new_hash": new_hash, "user_id":userID, "url":url}
 
