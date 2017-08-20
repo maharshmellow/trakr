@@ -1,5 +1,6 @@
 # Trakr
-Automatically checks for updates on websites!
+Automatically checks for updates on websites! <br><br>
+<a href="https://trakr.maharsh.net"><img src="https://cdn.rawgit.com/maharshmellow/550f99fcf7934352e83bb29d85176a04/raw/061ba515f1b0298e00e7e72210633b4502ce9fe9/demo.svg" width="150px;"/></a>
 
 ### Features / Tech
 - Firebase login
